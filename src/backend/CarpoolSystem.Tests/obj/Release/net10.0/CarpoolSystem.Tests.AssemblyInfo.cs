@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarpoolSystem.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69fdc3734e0fb739e7e30aeb15bf3bb73e48ce12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11b576a865009632a3e7d319c24f4abca0757acf")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarpoolSystem.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarpoolSystem.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

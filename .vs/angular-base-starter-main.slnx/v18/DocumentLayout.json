@@ -1,0 +1,724 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.routes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\app.routes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\auth\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\profile\\profile.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\profile\\profile.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\costs\\cost-sharing.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\costs\\cost-sharing.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\bookings.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\rides\\bookings.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\trip-detail.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\rides\\trip-detail.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\find-rides.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\rides\\find-rides.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\employee-directory.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\admin\\employee-directory.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\admin-dashboard.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\admin\\admin-dashboard.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\notifications.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\home\\notifications.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\trips\\create-trip.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\trips\\create-trip.page.ts||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\environments\\environment.development.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\environments\\environment.development.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\app.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\spinner.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\ui\\spinner.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\card.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\ui\\card.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\ui\\button.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\ui\\button.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\main.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\app.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\app.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\home.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\home\\home.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\layout\\app-layout.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\layout\\app-layout.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\auth\\login.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\auth\\login.page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\error.interceptor.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\http\\error.interceptor.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\auth.interceptor.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\http\\auth.interceptor.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\config\\env.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\config\\env.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\token-storage.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\auth\\token-storage.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.store.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\auth\\auth.store.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.guard.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\core\\auth\\auth.guard.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\vi.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\i18n\\vi.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\en.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\i18n\\en.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\users\\user-form-dialog.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\features\\users\\user-form-dialog.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\angular.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:angular.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.prettierrc||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.prettierrc||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.postcssrc.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.postcssrc.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\nginx.conf||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:nginx.conf||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\tsconfig.spec.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tsconfig.spec.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 40,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "profile.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\profile\\profile.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\profile\\profile.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\profile\\profile.page.ts",
+              "RelativeToolTip": "src\\app\\features\\profile\\profile.page.ts",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAwLkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:50:52.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "cost-sharing.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\costs\\cost-sharing.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\costs\\cost-sharing.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\costs\\cost-sharing.page.ts",
+              "RelativeToolTip": "src\\app\\features\\costs\\cost-sharing.page.ts",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAuwKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:46:13.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "bookings.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\bookings.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\rides\\bookings.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\bookings.page.ts",
+              "RelativeToolTip": "src\\app\\features\\rides\\bookings.page.ts",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAuwKYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:44:59.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "employee-directory.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\employee-directory.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\admin\\employee-directory.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\employee-directory.page.ts",
+              "RelativeToolTip": "src\\app\\features\\admin\\employee-directory.page.ts",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAAwMgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:39:47.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "admin-dashboard.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\admin-dashboard.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\admin\\admin-dashboard.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\admin\\admin-dashboard.page.ts",
+              "RelativeToolTip": "src\\app\\features\\admin\\admin-dashboard.page.ts",
+              "ViewState": "AgIAAH0AAAAAAAAAAADwv/EAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:39:10.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "notifications.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\notifications.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\home\\notifications.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\notifications.page.ts",
+              "RelativeToolTip": "src\\app\\features\\home\\notifications.page.ts",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAswIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:35:48.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "trip-detail.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\trip-detail.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\rides\\trip-detail.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\trip-detail.page.ts",
+              "RelativeToolTip": "src\\app\\features\\rides\\trip-detail.page.ts",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAswKUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:35:00.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "create-trip.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\trips\\create-trip.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\trips\\create-trip.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\trips\\create-trip.page.ts",
+              "RelativeToolTip": "src\\app\\features\\trips\\create-trip.page.ts",
+              "ViewState": "AgIAAIsBAAAAAAAAAAAAAJUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:28:29.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "environment.development.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\environments\\environment.development.ts",
+              "RelativeDocumentMoniker": "src\\environments\\environment.development.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\environments\\environment.development.ts",
+              "RelativeToolTip": "src\\environments\\environment.development.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:21:08.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "spinner.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\spinner.ts",
+              "RelativeDocumentMoniker": "src\\app\\shared\\ui\\spinner.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\spinner.ts",
+              "RelativeToolTip": "src\\app\\shared\\ui\\spinner.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:20:56.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "card.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\card.ts",
+              "RelativeDocumentMoniker": "src\\app\\shared\\ui\\card.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\card.ts",
+              "RelativeToolTip": "src\\app\\shared\\ui\\card.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:20:55.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "button.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.ts",
+              "RelativeDocumentMoniker": "src\\app\\shared\\ui\\button.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.ts",
+              "RelativeToolTip": "src\\app\\shared\\ui\\button.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:20:54.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "button.spec.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.spec.ts",
+              "RelativeDocumentMoniker": "src\\app\\shared\\ui\\button.spec.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\ui\\button.spec.ts",
+              "RelativeToolTip": "src\\app\\shared\\ui\\button.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T14:20:52.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": ".tsbuildinfo",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo",
+              "RelativeDocumentMoniker": ".angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo",
+              "RelativeToolTip": ".angular\\cache\\22.0.5\\angular-base\\.tsbuildinfo",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-06T14:19:45.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "find-rides.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\find-rides.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\rides\\find-rides.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\rides\\find-rides.page.ts",
+              "RelativeToolTip": "src\\app\\features\\rides\\find-rides.page.ts",
+              "ViewState": "AgIAALkAAAAAAAAAAAAiwM0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:57:29.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "app-layout.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\layout\\app-layout.ts",
+              "RelativeDocumentMoniker": "src\\app\\shared\\layout\\app-layout.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\shared\\layout\\app-layout.ts",
+              "RelativeToolTip": "src\\app\\shared\\layout\\app-layout.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:46:45.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "login.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\auth\\login.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\auth\\login.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\auth\\login.page.ts",
+              "RelativeToolTip": "src\\app\\features\\auth\\login.page.ts",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:35:03.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "error.interceptor.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\error.interceptor.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\http\\error.interceptor.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\error.interceptor.ts",
+              "RelativeToolTip": "src\\app\\core\\http\\error.interceptor.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:31:36.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "auth.interceptor.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\auth.interceptor.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\http\\auth.interceptor.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\http\\auth.interceptor.ts",
+              "RelativeToolTip": "src\\app\\core\\http\\auth.interceptor.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:31:35.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "env.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\config\\env.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\config\\env.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\config\\env.ts",
+              "RelativeToolTip": "src\\app\\core\\config\\env.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:31:27.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "auth.guard.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.guard.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\auth\\auth.guard.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.guard.ts",
+              "RelativeToolTip": "src\\app\\core\\auth\\auth.guard.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T13:31:16.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "favicon.ico",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\favicon.ico",
+              "RelativeDocumentMoniker": "public\\favicon.ico",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\favicon.ico",
+              "RelativeToolTip": "public\\favicon.ico",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2026-08-06T13:31:07.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "main.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\main.ts",
+              "RelativeDocumentMoniker": "src\\main.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\main.ts",
+              "RelativeToolTip": "src\\main.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-06T09:23:06.984Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "vi.json",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\vi.json",
+              "RelativeDocumentMoniker": "public\\i18n\\vi.json",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\vi.json",
+              "RelativeToolTip": "public\\i18n\\vi.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-06T09:20:53.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "en.json",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\en.json",
+              "RelativeDocumentMoniker": "public\\i18n\\en.json",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\public\\i18n\\en.json",
+              "RelativeToolTip": "public\\i18n\\en.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-06T09:20:44.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "app.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.ts",
+              "RelativeDocumentMoniker": "src\\app\\app.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.ts",
+              "RelativeToolTip": "src\\app\\app.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:29:07.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "app.spec.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.spec.ts",
+              "RelativeDocumentMoniker": "src\\app\\app.spec.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.spec.ts",
+              "RelativeToolTip": "src\\app\\app.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:29:06.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.routes.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.routes.ts",
+              "RelativeDocumentMoniker": "src\\app\\app.routes.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.routes.ts",
+              "RelativeToolTip": "src\\app\\app.routes.ts",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:29:05.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "app.config.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.config.ts",
+              "RelativeDocumentMoniker": "src\\app\\app.config.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\app.config.ts",
+              "RelativeToolTip": "src\\app\\app.config.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:29:02.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\styles.css",
+              "RelativeDocumentMoniker": "src\\styles.css",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\styles.css",
+              "RelativeToolTip": "src\\styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-04T13:28:18.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "user-form-dialog.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\users\\user-form-dialog.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\users\\user-form-dialog.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\users\\user-form-dialog.ts",
+              "RelativeToolTip": "src\\app\\features\\users\\user-form-dialog.ts",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:28:04.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "home.page.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\home.page.ts",
+              "RelativeDocumentMoniker": "src\\app\\features\\home\\home.page.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\features\\home\\home.page.ts",
+              "RelativeToolTip": "src\\app\\features\\home\\home.page.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:27:38.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "angular.json",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\angular.json",
+              "RelativeDocumentMoniker": "angular.json",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\angular.json",
+              "RelativeToolTip": "angular.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-04T13:27:19.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": ".prettierrc",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.prettierrc",
+              "RelativeDocumentMoniker": ".prettierrc",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.prettierrc",
+              "RelativeToolTip": ".prettierrc",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-04T13:27:18.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": ".postcssrc.json",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.postcssrc.json",
+              "RelativeDocumentMoniker": ".postcssrc.json",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.postcssrc.json",
+              "RelativeToolTip": ".postcssrc.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-04T13:27:16.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-04T13:27:15.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": ".dockerignore",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.dockerignore",
+              "RelativeDocumentMoniker": ".dockerignore",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.dockerignore",
+              "RelativeToolTip": ".dockerignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-04T13:27:09.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "auth.store.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.store.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\auth\\auth.store.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.store.ts",
+              "RelativeToolTip": "src\\app\\core\\auth\\auth.store.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:26:51.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "auth.service.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.service.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\auth\\auth.service.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\auth.service.ts",
+              "RelativeToolTip": "src\\app\\core\\auth\\auth.service.ts",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:26:49.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "token-storage.ts",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\token-storage.ts",
+              "RelativeDocumentMoniker": "src\\app\\core\\auth\\token-storage.ts",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\app\\core\\auth\\token-storage.ts",
+              "RelativeToolTip": "src\\app\\core\\auth\\token-storage.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-08-04T13:26:43.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\index.html",
+              "RelativeDocumentMoniker": "src\\index.html",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\src\\index.html",
+              "RelativeToolTip": "src\\index.html",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswAsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-08-04T13:26:27.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "nginx.conf",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\nginx.conf",
+              "RelativeDocumentMoniker": "nginx.conf",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\nginx.conf",
+              "RelativeToolTip": "nginx.conf",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-04T13:26:16.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "tsconfig.spec.json",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\tsconfig.spec.json",
+              "RelativeDocumentMoniker": "tsconfig.spec.json",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\tsconfig.spec.json",
+              "RelativeToolTip": "tsconfig.spec.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-04T13:26:13.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": ".editorconfig",
+              "DocumentMoniker": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.editorconfig",
+              "RelativeDocumentMoniker": ".editorconfig",
+              "ToolTip": "C:\\Users\\DELL 3520\\OneDrive\\M\u00E1y t\u00EDnh\\angular-base-starter-main\\.editorconfig",
+              "RelativeToolTip": ".editorconfig",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-04T13:26:03.682Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
