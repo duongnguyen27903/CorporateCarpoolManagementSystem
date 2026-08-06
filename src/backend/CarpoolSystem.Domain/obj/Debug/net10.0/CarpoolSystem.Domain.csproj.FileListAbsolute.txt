@@ -1,0 +1,12 @@
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\bin\Debug\net10.0\CarpoolSystem.Domain.deps.json
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\bin\Debug\net10.0\CarpoolSystem.Domain.dll
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\bin\Debug\net10.0\CarpoolSystem.Domain.pdb
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.AssemblyInfoInputs.cache
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.AssemblyInfo.cs
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.csproj.CoreCompileInputs.cache
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.sourcelink.json
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.dll
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\refint\CarpoolSystem.Domain.dll
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\CarpoolSystem.Domain.pdb
+D:\CorporateCarpoolManagementSystem\src\backend\CarpoolSystem.Domain\obj\Debug\net10.0\ref\CarpoolSystem.Domain.dll
