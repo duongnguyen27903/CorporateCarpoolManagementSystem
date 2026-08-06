@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Angular Base
 
 Production-ready Angular starter: **Angular 22** (standalone components,
@@ -151,3 +152,6 @@ docker run -p 8080:80 angular-base
 Multi-stage build (Node → nginx). Note the build output is
 `dist/angular-base/browser` (Angular application builder), which the Dockerfile
 copies into nginx.
+=======
+# CorporateCarpoolManagementSystem
+>>>>>>> origin/dev
