@@ -1,10 +1,12 @@
 ﻿using System.Text;
 using CarpoolSystem.Application;
 using CarpoolSystem.Infrastructure.Sqlserver;
+using CarpoolSystem.Infrastructure.Sqlserver.Persistence; // Thêm
+using CarpoolSystem.Domain.Entities; // Thêm
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-// Note: Use fully-qualified names for Microsoft.OpenApi types below to avoid
-// potential assembly/namespace resolution issues with Swashbuckle package.
+using BCrypt.Net; // Thêm (cần cài package BCrypt.Net-Next)
+using Microsoft.EntityFrameworkCore; // Thêm
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +33,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddControllers();
 
-// ========== THÊM SWAGGER ==========
+// Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -65,10 +67,96 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-// ==================================
 
 var app = builder.Build();
 
+// ============================================================
+// 🔥 TỰ ĐỘNG MIGRATE VÀ SEED DỮ LIỆU (THÊM VÀO ĐÂY)
+// ============================================================
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<CarpoolDbContext>();
+    dbContext.Database.Migrate();
+
+    // Kiểm tra nếu chưa có tài khoản admin
+    if (!dbContext.Employees.Any(e => e.Email == "admin@carpool.com"))
+    {
+        // Seed Roles nếu chưa có
+        if (!dbContext.Roles.Any())
+        {
+            dbContext.Roles.AddRange(
+                new Role { RoleName = "Admin" },
+                new Role { RoleName = "Driver" },
+                new Role { RoleName = "Passenger" }
+            );
+        }
+
+        // Seed Departments nếu chưa có
+        if (!dbContext.Departments.Any())
+        {
+            dbContext.Departments.AddRange(
+                new Department { DepartmentName = "Phòng Hành chính", IsActive = true },
+                new Department { DepartmentName = "Phòng Kỹ thuật", IsActive = true },
+                new Department { DepartmentName = "Phòng Kinh doanh", IsActive = true }
+            );
+        }
+
+        dbContext.SaveChanges(); // Lưu Roles và Departments để có ID
+
+        // 1. Admin
+        var admin = new Employee
+        {
+            FullName = "Admin System",
+            Email = "admin@carpool.com",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
+            DepartmentId = 1,
+            RoleId = 1, // Admin
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+            Phone = "0900000000",
+            Address = "Default Address",
+            DateOfBirth = new DateTime(1990, 1, 1),
+            Gender = "Male"
+        };
+        dbContext.Employees.Add(admin);
+
+        // 2. Driver
+        var driver = new Employee
+        {
+            FullName = "Driver User",
+            Email = "driver@carpool.com",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
+            DepartmentId = 2, // Phòng Kỹ thuật
+            RoleId = 2,       // Driver
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+            Phone = "0900000001",
+            Address = "123 Driver Street",
+            DateOfBirth = new DateTime(1985, 5, 15),
+            Gender = "Male"
+        };
+        dbContext.Employees.Add(driver);
+
+        // 3. Passenger
+        var passenger = new Employee
+        {
+            FullName = "Passenger User",
+            Email = "passenger@carpool.com",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
+            DepartmentId = 3, // Phòng Kinh doanh
+            RoleId = 3,       // Passenger
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+            Phone = "0900000002",
+            Address = "456 Passenger Avenue",
+            DateOfBirth = new DateTime(1995, 8, 20),
+            Gender = "Female"
+        };
+        dbContext.Employees.Add(passenger);
+
+        dbContext.SaveChanges();
+    }
+}
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
