@@ -131,4 +131,7 @@ Cần hỗ trợ gì tiếp theo không? Ví dụ:
 
 Cập nhật lần cuối: 2026-08-06
 
-http://localhost:5147/swagger/index.html
+cách chạy swagger:
+dotnet run --project CarpoolSystem.API/CarpoolSystem.API.csproj
+
+=> link : http://localhost:5147/swagger/index.html
