@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="CarpoolSystem.API/CarpoolSystem.API.csproj" />
-  <Project Path="CarpoolSystem.Application/CarpoolSystem.Application.csproj" />
-  <Project Path="CarpoolSystem.Domain/CarpoolSystem.Domain.csproj" />
-  <Project Path="CarpoolSystem.Infrastructure.Sqlserver/CarpoolSystem.Infrastructure.Sqlserver.csproj" />
-  <Project Path="CarpoolSystem.Tests/CarpoolSystem.Tests.csproj" />
-</Solution>
