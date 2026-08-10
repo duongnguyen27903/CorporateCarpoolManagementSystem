@@ -15,10 +15,14 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
         loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage),
       },
       {
-        // Lazy-loaded feature chunk.
         path: 'users',
         loadComponent: () =>
           import('./features/users/users-list.page').then((m) => m.UsersListPage),
@@ -66,5 +70,4 @@ export const routes: Routes = [
       }
     ],
   },
-  
 ]
