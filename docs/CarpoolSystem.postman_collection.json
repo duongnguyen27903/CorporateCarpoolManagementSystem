@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "CarpoolSystem API - Sprint2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5147/api" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/auth/login",
+            "body": { "mode": "raw", "raw": "{\n  \"Email\": \"driver@example.com\",\n  \"Password\": \"Password123!\"\n}" }
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/auth/register",
+            "body": { "mode": "raw", "raw": "{\n  \"FullName\": \"Alice Driver\",\n  \"Email\": \"driver@example.com\",\n  \"Password\": \"Password123!\",\n  \"DepartmentId\": 1,\n  \"RoleId\": 2\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trip",
+      "item": [
+        {
+          "name": "Create Trip",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/trip",
+            "body": { "mode": "raw", "raw": "{\n  \"RouteId\": 1,\n  \"VehicleId\": 2,\n  \"DepartureTime\": \"2026-08-12T08:00:00Z\",\n  \"AvailableSeats\": 3\n}" }
+          }
+        },
+        { "name": "Get My Trips", "request": { "method": "GET", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/trip/my-trips" } },
+        { "name": "Get Active Trips", "request": { "method": "GET", "url": "{{baseUrl}}/trip/active" } },
+        { "name": "Get Trip by Id", "request": { "method": "GET", "url": "{{baseUrl}}/trip/1" } },
+        { "name": "Update Trip Status", "request": { "method": "PUT", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/trip/1/status", "body": { "mode": "raw", "raw": "{\n  \"Status\": \"Completed\"\n}" } } }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        { "name": "Create Booking", "request": { "method": "POST", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" } ], "url": "{{baseUrl}}/booking", "body": { "mode": "raw", "raw": "{\n  \"TripId\": 1\n}" } } },
+        { "name": "Get My Bookings", "request": { "method": "GET", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/booking/my-bookings" } },
+        { "name": "Confirm Booking", "request": { "method": "PUT", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/booking/1/confirm" } },
+        { "name": "Cancel Booking", "request": { "method": "PUT", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/booking/1/cancel" } },
+        { "name": "Checkin Booking", "request": { "method": "PUT", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/booking/1/checkin" } }
+      ]
+    },
+    {
+      "name": "Cost",
+      "item": [
+        { "name": "Get My Cost History", "request": { "method": "GET", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/cost/my-history" } },
+        { "name": "Get Costs by Trip (Admin)", "request": { "method": "GET", "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ], "url": "{{baseUrl}}/cost/trip/1" } }
+      ]
+    }
+  ]
+}

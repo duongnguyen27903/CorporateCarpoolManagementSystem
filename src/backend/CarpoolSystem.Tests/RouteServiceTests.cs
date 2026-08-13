@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Application.Services;
 using CarpoolSystem.Domain.Entities;
+using RouteEntity = CarpoolSystem.Domain.Entities.Route;
 using Moq;
 using Xunit;
 
@@ -20,7 +21,7 @@ namespace CarpoolSystem.Tests
             var mockRouteRepo = new Mock<IGenericRepository<Route>>();
 
             mockEmployeeRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new Employee { EmployeeId = 1 });
-            mockRouteRepo.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Route, bool>>>())).ReturnsAsync(new List<Route>());
+            mockRouteRepo.Setup(r => r.FindAsync(It.IsAny<Expression<Func<Route, bool>>>())).ReturnsAsync(new List<RouteEntity>());
 
             mockUnitOfWork.Setup(u => u.Repository<Employee>()).Returns(mockEmployeeRepo.Object);
             mockUnitOfWork.Setup(u => u.Repository<Route>()).Returns(mockRouteRepo.Object);
@@ -41,7 +42,7 @@ namespace CarpoolSystem.Tests
             var mockUnitOfWork = new Mock<IUnitOfWork>();
             var mockRouteRepo = new Mock<IGenericRepository<Route>>();
 
-            mockRouteRepo.Setup(r => r.GetByIdAsync(10)).ReturnsAsync(new Route { RouteId = 10, EmployeeId = 2 });
+            mockRouteRepo.Setup(r => r.GetByIdAsync(10)).ReturnsAsync(new RouteEntity { RouteId = 10, EmployeeId = 2 });
             mockUnitOfWork.Setup(u => u.Repository<Route>()).Returns(mockRouteRepo.Object);
 
             var service = new RouteService(mockUnitOfWork.Object);
@@ -55,7 +56,7 @@ namespace CarpoolSystem.Tests
             var mockUnitOfWork = new Mock<IUnitOfWork>();
             var mockRouteRepo = new Mock<IGenericRepository<Route>>();
 
-            mockRouteRepo.Setup(r => r.GetByIdAsync(5)).ReturnsAsync(new Route { RouteId = 5, EmployeeId = 1 });
+            mockRouteRepo.Setup(r => r.GetByIdAsync(5)).ReturnsAsync(new RouteEntity { RouteId = 5, EmployeeId = 1 });
             mockUnitOfWork.Setup(u => u.Repository<Route>()).Returns(mockRouteRepo.Object);
 
             var service = new RouteService(mockUnitOfWork.Object);

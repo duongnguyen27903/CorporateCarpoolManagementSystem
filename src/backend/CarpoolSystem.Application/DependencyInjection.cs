@@ -10,6 +10,9 @@ namespace CarpoolSystem.Application
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IRouteService, RouteService>();
+            services.AddScoped<ITripService, TripService>();
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<ICostTransactionService, CostTransactionService>();
             services.AddScoped<TokenService>();
 
             return services;
