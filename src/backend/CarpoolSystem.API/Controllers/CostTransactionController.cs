@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarpoolSystem.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    // Use 'cost' base route to match tests and client usage (e.g., /api/cost/my-history)
+    [Route("api/cost")]
     [Authorize]
     public class CostTransactionController : ControllerBase
     {

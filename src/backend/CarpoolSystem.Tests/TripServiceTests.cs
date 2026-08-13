@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarpoolSystem.Application.Services;
 using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Domain.Entities;
+using RouteEntity = CarpoolSystem.Domain.Entities.Route;
 using Moq;
 using Xunit;
 
@@ -20,7 +21,7 @@ namespace CarpoolSystem.Tests
             var mockVehicleRepo = new Mock<IGenericRepository<Vehicle>>();
             var mockTripRepo = new Mock<IGenericRepository<Trip>>();
 
-            mockRouteRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new Route { RouteId = 1, EmployeeId = 1 });
+            mockRouteRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new RouteEntity { RouteId = 1, EmployeeId = 1 });
             mockVehicleRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(new Vehicle { VehicleId = 2, EmployeeId = 1, SeatCount = 4 });
 
             mockUow.Setup(u => u.Repository<Route>()).Returns(mockRouteRepo.Object);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarpoolSystem.Application.Services;
 using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Domain.Entities;
+using RouteEntity = CarpoolSystem.Domain.Entities.Route;
 using Moq;
 using Xunit;
 
@@ -24,7 +25,7 @@ namespace CarpoolSystem.Tests
             var mockCtRepo = new Mock<IGenericRepository<CostTransaction>>();
 
             mockTripRepo.Setup(t => t.GetByIdAsync(1)).ReturnsAsync(new Trip { TripId = 1, RouteId = 2, Status = "Completed" });
-            mockRouteRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(new Route { RouteId = 2, StartZoneId = 3, EndZoneId = 4 });
+            mockRouteRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(new RouteEntity { RouteId = 2, StartZoneId = 3, EndZoneId = 4 });
             mockZoneRepo.Setup(z => z.GetByIdAsync(3)).ReturnsAsync(new Zone { ZoneId = 3, Latitude = 10.0m, Longitude = 20.0m });
             mockZoneRepo.Setup(z => z.GetByIdAsync(4)).ReturnsAsync(new Zone { ZoneId = 4, Latitude = 10.0m, Longitude = 20.0m });
             mockBookingRepo.Setup(b => b.FindAsync(It.IsAny<Expression<Func<Booking, bool>>>())).ReturnsAsync(new List<Booking>());
@@ -51,7 +52,7 @@ namespace CarpoolSystem.Tests
             var mockCtRepo = new Mock<IGenericRepository<CostTransaction>>();
 
             mockTripRepo.Setup(t => t.GetByIdAsync(1)).ReturnsAsync(new Trip { TripId = 1, RouteId = 2, Status = "Completed" });
-            mockRouteRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(new Route { RouteId = 2, StartZoneId = 3, EndZoneId = 4 });
+            mockRouteRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(new RouteEntity { RouteId = 2, StartZoneId = 3, EndZoneId = 4 });
             mockZoneRepo.Setup(z => z.GetByIdAsync(3)).ReturnsAsync(new Zone { ZoneId = 3, Latitude = 10.0m, Longitude = 20.0m });
             mockZoneRepo.Setup(z => z.GetByIdAsync(4)).ReturnsAsync(new Zone { ZoneId = 4, Latitude = 10.1m, Longitude = 20.1m });
 

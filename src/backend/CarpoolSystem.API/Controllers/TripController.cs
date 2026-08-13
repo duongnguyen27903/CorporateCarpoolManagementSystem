@@ -14,10 +14,12 @@ namespace CarpoolSystem.API.Controllers
     public class TripController : ControllerBase
     {
         private readonly ITripService _tripService;
+        private readonly Microsoft.Extensions.Logging.ILogger<TripController> _logger;
 
-        public TripController(ITripService tripService)
+        public TripController(ITripService tripService, Microsoft.Extensions.Logging.ILogger<TripController> logger)
         {
             _tripService = tripService;
+            _logger = logger;
         }
 
         // Driver tạo chuyến từ route
@@ -69,9 +71,12 @@ namespace CarpoolSystem.API.Controllers
             var employeeIdClaim = User.Claims.FirstOrDefault(c => c.Type == "employeeId")?.Value;
             if (employeeIdClaim == null) return Unauthorized();
 
+            _logger.LogInformation("UpdateStatus called for tripId={TripId} by employeeClaim={EmployeeClaim} with status={Status}", id, employeeIdClaim, request?.Status);
+
             try
             {
                 var trip = await _tripService.UpdateTripStatusAsync(int.Parse(employeeIdClaim), id, request.Status);
+                _logger.LogInformation("UpdateStatus succeeded for tripId={TripId} newStatus={Status}", id, trip.Status);
                 return Ok(new TripResponse(trip.TripId, trip.RouteId, trip.DriverId, trip.VehicleId, trip.DepartureTime, trip.AvailableSeats, trip.Status, trip.CreatedAt));
             }
             catch (UnauthorizedAccessException)
