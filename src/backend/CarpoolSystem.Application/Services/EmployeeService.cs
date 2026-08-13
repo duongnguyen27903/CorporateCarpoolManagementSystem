@@ -55,6 +55,20 @@ namespace CarpoolSystem.Application.Services
                 user.Role = await roleRepo.GetByIdAsync(user.RoleId);
             }
 
+            // Diagnostic logging to help integration test debugging
+            try
+            {
+                if (user == null)
+                {
+                    Console.WriteLine($"ValidateCredentials: no user found for email={email}");
+                }
+                else
+                {
+                    Console.WriteLine($"ValidateCredentials: found userId={user.EmployeeId}, email={user.Email}, pwdHashPrefix={user.PasswordHash?.Substring(0, Math.Min(6, user.PasswordHash.Length))}");
+                }
+            }
+            catch { }
+
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
                 return user;

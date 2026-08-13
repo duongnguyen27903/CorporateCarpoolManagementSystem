@@ -86,7 +86,12 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<CarpoolDbContext>();
-    dbContext.Database.Migrate();
+    // Only apply EF migrations when using a relational provider. The InMemory provider used in tests
+    // does not support Migrate() and will throw. Check the provider name before calling Migrate.
+    if (dbContext.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+    {
+        dbContext.Database.Migrate();
+    }
 
     // Kiểm tra nếu chưa có tài khoản admin
     if (!dbContext.Employees.Any(e => e.Email == "admin@carpool.com"))
@@ -113,14 +118,23 @@ using (var scope = app.Services.CreateScope())
 
         dbContext.SaveChanges(); // Lưu Roles và Departments để có ID
 
+        // Lấy RoleId và DepartmentId một cách an toàn từ database (không dùng ID cứng)
+        var adminRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Admin");
+        var driverRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Driver");
+        var passengerRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Passenger");
+
+        var deptHanhChinh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Hanh"));
+        var deptKyThuat = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Ky"));
+        var deptKinhDoanh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Kinh"));
+
         // 1. Admin
         var admin = new Employee
         {
             FullName = "Admin System",
             Email = "admin@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = 1,
-            RoleId = 1, // Admin
+            DepartmentId = deptHanhChinh?.DepartmentId ?? 0,
+            RoleId = adminRole?.RoleId ?? 0, // Admin
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000000",
@@ -136,8 +150,8 @@ using (var scope = app.Services.CreateScope())
             FullName = "Driver User",
             Email = "driver@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = 2, // Phòng Kỹ thuật
-            RoleId = 2,       // Driver
+            DepartmentId = deptKyThuat?.DepartmentId ?? 0,
+            RoleId = driverRole?.RoleId ?? 0,       // Driver
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000001",
@@ -153,8 +167,8 @@ using (var scope = app.Services.CreateScope())
             FullName = "Passenger User",
             Email = "passenger@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = 3, // Phòng Kinh doanh
-            RoleId = 3,       // Passenger
+            DepartmentId = deptKinhDoanh?.DepartmentId ?? 0,
+            RoleId = passengerRole?.RoleId ?? 0,       // Passenger
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000002",
