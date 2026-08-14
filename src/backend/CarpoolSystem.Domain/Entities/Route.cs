@@ -27,5 +27,6 @@ namespace CarpoolSystem.Domain.Entities
         public bool IsActive { get; set; } = true;
 
         public ICollection<Trip> Trips { get; set; } = new List<Trip>();
+        public ICollection<RouteDetail> RouteDetail { get; set; } = new HashSet<RouteDetail>();
     }
 }

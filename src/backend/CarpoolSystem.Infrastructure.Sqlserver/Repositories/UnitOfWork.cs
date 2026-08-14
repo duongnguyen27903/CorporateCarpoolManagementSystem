@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Infrastructure.Sqlserver.Persistence;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CarpoolSystem.Infrastructure.Sqlserver.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private IDbContextTransaction? _transaction;
         private readonly CarpoolDbContext _context;
         private readonly Dictionary<Type, object> _repositories;
 
         public UnitOfWork(CarpoolDbContext context)
         {
+
             _context = context;
             _repositories = new Dictionary<Type, object>();
         }
@@ -33,6 +36,29 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Repositories
         public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task BeginTransactionAsync() =>
+        _transaction = await _context.Database.BeginTransactionAsync();
+
+        public async Task CommitAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.CommitAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
+        }
+
+        public async Task RollbackAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.RollbackAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
         }
 
         public void Dispose()

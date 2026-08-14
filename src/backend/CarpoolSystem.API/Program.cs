@@ -127,9 +127,10 @@ using (var scope = app.Services.CreateScope())
         var adminRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Admin");
         var driverRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Driver");
         var passengerRole = dbContext.Roles.FirstOrDefault(r => r.RoleName == "Passenger");
-        var deptHanhChinh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Hanh"));
-        var deptKyThuat = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Ky"));
-        var deptKinhDoanh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.Contains("Kinh"));
+        // Match seeded department names exactly (they include diacritics). Fallback to first department when not found.
+        var deptHanhChinh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.StartsWith("Phòng Hành chính")) ?? dbContext.Departments.FirstOrDefault();
+        var deptKyThuat = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.StartsWith("Phòng Kỹ thuật")) ?? dbContext.Departments.FirstOrDefault();
+        var deptKinhDoanh = dbContext.Departments.FirstOrDefault(d => d.DepartmentName.StartsWith("Phòng Kinh doanh")) ?? dbContext.Departments.FirstOrDefault();
 
         // Admin
         dbContext.Employees.Add(new Employee
@@ -137,8 +138,8 @@ using (var scope = app.Services.CreateScope())
             FullName = "Admin System",
             Email = "admin@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = deptHanhChinh?.DepartmentId ?? 0,
-            RoleId = adminRole?.RoleId ?? 0,
+            DepartmentId = deptHanhChinh?.DepartmentId ?? dbContext.Departments.First().DepartmentId,
+            RoleId = adminRole?.RoleId ?? dbContext.Roles.First().RoleId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000000",
@@ -153,8 +154,8 @@ using (var scope = app.Services.CreateScope())
             FullName = "Driver User",
             Email = "driver@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = deptKyThuat?.DepartmentId ?? 0,
-            RoleId = driverRole?.RoleId ?? 0,
+            DepartmentId = deptKyThuat?.DepartmentId ?? dbContext.Departments.First().DepartmentId,
+            RoleId = driverRole?.RoleId ?? dbContext.Roles.First().RoleId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000001",
@@ -169,8 +170,8 @@ using (var scope = app.Services.CreateScope())
             FullName = "Passenger User",
             Email = "passenger@carpool.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-            DepartmentId = deptKinhDoanh?.DepartmentId ?? 0,
-            RoleId = passengerRole?.RoleId ?? 0,
+            DepartmentId = deptKinhDoanh?.DepartmentId ?? dbContext.Departments.First().DepartmentId,
+            RoleId = passengerRole?.RoleId ?? dbContext.Roles.First().RoleId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow,
             Phone = "0900000002",

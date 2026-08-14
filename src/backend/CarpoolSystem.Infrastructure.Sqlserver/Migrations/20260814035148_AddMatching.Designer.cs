@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 {
     [DbContext(typeof(CarpoolDbContext))]
-    [Migration("20260806031452_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260814035148_AddMatching")]
+    partial class AddMatching
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.10")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -132,7 +132,14 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"));
 
+                    b.Property<string>("Address")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DepartmentId")
@@ -148,6 +155,10 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Gender")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -157,7 +168,6 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -235,6 +245,58 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                     b.HasIndex("StartZoneId");
 
                     b.ToTable("Routes");
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.Property<int>("RouteDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RouteDetailId"));
+
+                    b.Property<TimeOnly>("DepartureTime")
+                        .HasColumnType("time");
+
+                    b.Property<byte>("Direction")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("EncodedPolyline")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RouteDetailId");
+
+                    b.HasIndex("RouteId");
+
+                    b.ToTable("RouteDetail", (string)null);
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteH3", b =>
+                {
+                    b.Property<int>("RouteDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("H3Cell")
+                        .HasColumnType("bigint");
+
+                    b.Property<TimeOnly>("DepartureTime")
+                        .HasColumnType("time");
+
+                    b.Property<short>("Sequence")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("RouteDetailId", "H3Cell");
+
+                    b.HasIndex("H3Cell", "DepartureTime")
+                        .HasDatabaseName("RouteH3_H3Cell_DepartureTime");
+
+                    SqlServerIndexBuilderExtensions.IncludeProperties(b.HasIndex("H3Cell", "DepartureTime"), new[] { "RouteDetailId", "Sequence" });
+
+                    b.ToTable("RouteH3", (string)null);
                 });
 
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
@@ -421,6 +483,28 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                     b.Navigation("StartZone");
                 });
 
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.HasOne("CarpoolSystem.Domain.Entities.Route", "Route")
+                        .WithMany("RouteDetail")
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteH3", b =>
+                {
+                    b.HasOne("CarpoolSystem.Domain.Entities.RouteDetail", "RouteDetail")
+                        .WithMany("H3Cells")
+                        .HasForeignKey("RouteDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RouteDetail");
+                });
+
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
                 {
                     b.HasOne("CarpoolSystem.Domain.Entities.Employee", "Driver")
@@ -484,7 +568,14 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Route", b =>
                 {
+                    b.Navigation("RouteDetail");
+
                     b.Navigation("Trips");
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.Navigation("H3Cells");
                 });
 
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
