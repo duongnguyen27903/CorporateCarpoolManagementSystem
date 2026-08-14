@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CarpoolSystem.Domain.Entities
@@ -14,6 +15,7 @@ namespace CarpoolSystem.Domain.Entities
         public required TimeOnly DepartureTime { get; init; }
 
         // Navigation Property (nếu dùng)
+        [JsonIgnore]
         public RouteDetail? RouteDetail { get; init; }
     }
 }

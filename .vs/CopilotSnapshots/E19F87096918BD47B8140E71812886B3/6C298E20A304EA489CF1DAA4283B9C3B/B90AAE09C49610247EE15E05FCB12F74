@@ -18,7 +18,7 @@ namespace CarpoolSystem.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IReadOnlyList<RouteDetailResponseDto>> FindMatchingRouteDetailAsync(
+        public async Task<IReadOnlyList<RouteDetail>> FindMatchingRouteDetailAsync(
             IReadOnlyCollection<long> pickupCells,
             IReadOnlyCollection<long> dropoffCells,
             TimeOnly desiredDepartureTime,
@@ -65,20 +65,12 @@ namespace CarpoolSystem.Application.Services
                 .ToList();
 
             if (!resultIds.Any())
-                return Array.Empty<RouteDetailResponseDto>();
+                return Array.Empty<RouteDetail>();
 
             var routeDetailRepo = _unitOfWork.Repository<RouteDetail>();
-            var matchedRouteDetails = await routeDetailRepo.FindAsync(x => resultIds.Contains(x.RouteDetailId));
-            var result = matchedRouteDetails.Select(rd => new RouteDetailResponseDto
-            {
-                RouteDetailId = rd.RouteDetailId,
-                RouteId = rd.RouteId,
-                Direction = rd.Direction,
-                DepartureTime = rd.DepartureTime,
-                EncodedPolyline = rd.EncodedPolyline
-            }).ToList();
+            var matchedRouteDetails = (await routeDetailRepo.FindAsync(x => resultIds.Contains(x.RouteDetailId))).ToList();
 
-            return result;
+            return matchedRouteDetails;
         }
     }
 }

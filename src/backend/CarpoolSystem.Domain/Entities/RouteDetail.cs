@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CarpoolSystem.Domain.Entities
@@ -24,6 +25,8 @@ namespace CarpoolSystem.Domain.Entities
 
         // Navigation property
         public Route Route { get; set; } = null!;
+
+        [JsonIgnore]
         public ICollection<RouteH3> H3Cells { get; init; }
         = new List<RouteH3>();
     }
