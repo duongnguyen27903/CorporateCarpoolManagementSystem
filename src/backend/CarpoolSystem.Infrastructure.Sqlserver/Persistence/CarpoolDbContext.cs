@@ -18,6 +18,8 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Persistence
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<CostTransaction> CostTransactions { get; set; }
+        public DbSet<RouteDetail> RouteDetails { get; set; }
+        public DbSet<RouteH3> RouteH3s { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -85,6 +87,71 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Persistence
                 .WithMany(r => r.Trips)
                 .HasForeignKey(t => t.RouteId)
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<RouteDetail>(entity =>
+            {
+                entity.ToTable("RouteDetail");
+
+                entity.HasKey(x => x.RouteDetailId);
+
+                entity.Property(x => x.RouteDetailId)
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(x => x.RouteId)
+                    .IsRequired();
+
+                entity.Property(x => x.Direction)
+                    .IsRequired();
+
+                entity.Property(x => x.DepartureTime)
+                    .IsRequired();
+
+                entity.Property(x => x.EncodedPolyline)
+                    .IsRequired();
+
+                entity.HasOne(x => x.Route)
+                    .WithMany(x => x.RouteDetail)
+                    .HasForeignKey(x => x.RouteId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity<RouteH3>(entity =>
+            {
+                entity.ToTable("RouteH3");
+
+                entity.HasKey(x => new
+                {
+                    x.RouteDetailId,
+                    x.H3Cell
+                });
+
+                entity.Property(x => x.RouteDetailId)
+                    .IsRequired();
+
+                entity.Property(x => x.H3Cell)
+                    .IsRequired();
+
+                entity.Property(x => x.Sequence)
+                    .IsRequired();
+
+                entity.Property(x => x.DepartureTime)
+                    .IsRequired();
+
+                entity.HasOne(x => x.RouteDetail)
+                    .WithMany(x => x.H3Cells)
+                    .HasForeignKey(x => x.RouteDetailId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                // indexing for efficient querying by H3Cell and DepartureTime
+                entity.HasIndex(x => new
+                {
+                    x.H3Cell,
+                    x.DepartureTime
+                })
+                .HasDatabaseName("RouteH3_H3Cell_DepartureTime")
+                .IncludeProperties(x => new
+                {
+                    x.RouteDetailId,
+                    x.Sequence
+                });
+            });
         }
     }
 }

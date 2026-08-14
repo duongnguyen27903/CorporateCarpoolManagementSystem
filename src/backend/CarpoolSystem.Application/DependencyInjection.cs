@@ -1,3 +1,4 @@
+using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,11 @@ namespace CarpoolSystem.Application
             services.AddScoped<ITripService, TripService>();
             services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<ICostTransactionService, CostTransactionService>();
+
+            services.AddScoped<IZoneService, ZoneService>();
+            services.AddScoped<IRouteDetailService, RouteDetailService>();
+            services.AddScoped<IPolylineService, PolylineService>();
+            services.AddScoped<IMatchingService, MatchingService>();
             services.AddScoped<TokenService>();
 
             return services;

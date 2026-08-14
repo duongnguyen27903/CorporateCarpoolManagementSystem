@@ -1,0 +1,421 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B154D8-B30F-7F3A-ABB9-ED6FFF41EFA1}|CarpoolSystem.Infrastructure.Sqlserver\\CarpoolSystem.Infrastructure.Sqlserver.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.infrastructure.sqlserver\\persistence\\carpooldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B154D8-B30F-7F3A-ABB9-ED6FFF41EFA1}|CarpoolSystem.Infrastructure.Sqlserver\\CarpoolSystem.Infrastructure.Sqlserver.csproj|solutionrelative:carpoolsystem.infrastructure.sqlserver\\persistence\\carpooldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.domain\\entities\\routeh3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|solutionrelative:carpoolsystem.domain\\entities\\routeh3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.domain\\entities\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|solutionrelative:carpoolsystem.domain\\entities\\zone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\controllers\\routedetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\controllers\\routedetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.domain\\entities\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF4179E8-B7E7-A8D9-8335-BB372477FCDF}|CarpoolSystem.Domain\\CarpoolSystem.Domain.csproj|solutionrelative:carpoolsystem.domain\\entities\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\controllers\\zonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\controllers\\zonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\controllers\\matchingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.api\\dtos\\zonedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28E90C58-6270-641C-F896-4D256C385CA0}|CarpoolSystem.API\\CarpoolSystem.API.csproj|solutionrelative:carpoolsystem.api\\dtos\\zonedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\helpers\\routeh3converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\helpers\\routeh3converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\helpers\\h3helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\helpers\\h3helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\helpers\\h3neighbors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\helpers\\h3neighbors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\services\\zoneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\services\\zoneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\interfaces\\ipolylineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\interfaces\\ipolylineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\models\\geopoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\models\\geopoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\interfaces\\imatchingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\interfaces\\imatchingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\services\\matchingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\services\\matchingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\services\\polylineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\services\\polylineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|c:\\users\\admin\\desktop\\ccms\\src\\backend\\carpoolsystem.application\\services\\routedetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFA8DB48-3C17-BB12-5245-A25903F3C0DA}|CarpoolSystem.Application\\CarpoolSystem.Application.csproj|solutionrelative:carpoolsystem.application\\services\\routedetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 22,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\appsettings.json",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\appsettings.json",
+              "RelativeToolTip": "CarpoolSystem.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-14T03:30:22.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Program.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Program.cs",
+              "RelativeToolTip": "CarpoolSystem.API\\Program.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAJoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:26:39.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ZoneController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\ZoneController.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\Controllers\\ZoneController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\ZoneController.cs",
+              "RelativeToolTip": "CarpoolSystem.API\\Controllers\\ZoneController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:21:18.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RouteDetailController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\RouteDetailController.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\Controllers\\RouteDetailController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\RouteDetailController.cs",
+              "RelativeToolTip": "CarpoolSystem.API\\Controllers\\RouteDetailController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAcwGcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:14:45.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MatchingController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\MatchingController.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\Controllers\\MatchingController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\Controllers\\MatchingController.cs",
+              "RelativeToolTip": "CarpoolSystem.API\\Controllers\\MatchingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:12:12.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ZoneDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\DTOs\\ZoneDTOs.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.API\\DTOs\\ZoneDTOs.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.API\\DTOs\\ZoneDTOs.cs",
+              "RelativeToolTip": "CarpoolSystem.API\\DTOs\\ZoneDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:10:13.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CarpoolDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Infrastructure.Sqlserver\\Persistence\\CarpoolDbContext.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Infrastructure.Sqlserver\\Persistence\\CarpoolDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Infrastructure.Sqlserver\\Persistence\\CarpoolDbContext.cs",
+              "RelativeToolTip": "CarpoolSystem.Infrastructure.Sqlserver\\Persistence\\CarpoolDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:24:24.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Route.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\Route.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Domain\\Entities\\Route.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\Route.cs",
+              "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\Route.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:40:46.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RouteH3Converter.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\RouteH3Converter.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Helpers\\RouteH3Converter.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\RouteH3Converter.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Helpers\\RouteH3Converter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:05:49.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "H3Helper.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\H3Helper.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Helpers\\H3Helper.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\H3Helper.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Helpers\\H3Helper.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:59:43.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RouteH3.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\RouteH3.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Domain\\Entities\\RouteH3.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\RouteH3.cs",
+              "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\RouteH3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:08:33.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Zone.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\Zone.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Domain\\Entities\\Zone.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Domain\\Entities\\Zone.cs",
+              "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\Zone.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:58:34.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "H3Neighbors.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\H3Neighbors.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Helpers\\H3Neighbors.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Helpers\\H3Neighbors.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Helpers\\H3Neighbors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T03:04:36.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\DependencyInjection.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\DependencyInjection.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:51:08.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ZoneService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\ZoneService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Services\\ZoneService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\ZoneService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Services\\ZoneService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:56:44.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RouteDetailService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\RouteDetailService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Services\\RouteDetailService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\RouteDetailService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Services\\RouteDetailService.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAABMAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:45:11.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PolylineService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\PolylineService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Services\\PolylineService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\PolylineService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Services\\PolylineService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:43:18.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MatchingService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\MatchingService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Services\\MatchingService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Services\\MatchingService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Services\\MatchingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:42:03.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IMatchingService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Interfaces\\IMatchingService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Interfaces\\IMatchingService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Interfaces\\IMatchingService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Interfaces\\IMatchingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:39:14.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GeoPoint.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Models\\GeoPoint.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Models\\GeoPoint.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Models\\GeoPoint.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Models\\GeoPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:37:39.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IPolylineService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Interfaces\\IPolylineService.cs",
+              "RelativeDocumentMoniker": "CarpoolSystem.Application\\Interfaces\\IPolylineService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\CCMS\\src\\backend\\CarpoolSystem.Application\\Interfaces\\IPolylineService.cs",
+              "RelativeToolTip": "CarpoolSystem.Application\\Interfaces\\IPolylineService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:35:55.865Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

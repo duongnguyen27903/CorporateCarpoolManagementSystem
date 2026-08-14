@@ -17,7 +17,7 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.10")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -244,6 +244,58 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                     b.ToTable("Routes");
                 });
 
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.Property<int>("RouteDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RouteDetailId"));
+
+                    b.Property<TimeOnly>("DepartureTime")
+                        .HasColumnType("time");
+
+                    b.Property<byte>("Direction")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("EncodedPolyline")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RouteDetailId");
+
+                    b.HasIndex("RouteId");
+
+                    b.ToTable("RouteDetail", (string)null);
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteH3", b =>
+                {
+                    b.Property<int>("RouteDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("H3Cell")
+                        .HasColumnType("bigint");
+
+                    b.Property<TimeOnly>("DepartureTime")
+                        .HasColumnType("time");
+
+                    b.Property<short>("Sequence")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("RouteDetailId", "H3Cell");
+
+                    b.HasIndex("H3Cell", "DepartureTime")
+                        .HasDatabaseName("RouteH3_H3Cell_DepartureTime");
+
+                    SqlServerIndexBuilderExtensions.IncludeProperties(b.HasIndex("H3Cell", "DepartureTime"), new[] { "RouteDetailId", "Sequence" });
+
+                    b.ToTable("RouteH3", (string)null);
+                });
+
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
                 {
                     b.Property<int>("TripId")
@@ -428,6 +480,28 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                     b.Navigation("StartZone");
                 });
 
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.HasOne("CarpoolSystem.Domain.Entities.Route", "Route")
+                        .WithMany("RouteDetail")
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteH3", b =>
+                {
+                    b.HasOne("CarpoolSystem.Domain.Entities.RouteDetail", "RouteDetail")
+                        .WithMany("H3Cells")
+                        .HasForeignKey("RouteDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RouteDetail");
+                });
+
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
                 {
                     b.HasOne("CarpoolSystem.Domain.Entities.Employee", "Driver")
@@ -491,7 +565,14 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Route", b =>
                 {
+                    b.Navigation("RouteDetail");
+
                     b.Navigation("Trips");
+                });
+
+            modelBuilder.Entity("CarpoolSystem.Domain.Entities.RouteDetail", b =>
+                {
+                    b.Navigation("H3Cells");
                 });
 
             modelBuilder.Entity("CarpoolSystem.Domain.Entities.Trip", b =>
