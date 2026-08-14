@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class AddMatching : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -62,7 +62,10 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                     FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     RefreshToken = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -146,6 +149,28 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RouteDetail",
+                columns: table => new
+                {
+                    RouteDetailId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RouteId = table.Column<int>(type: "int", nullable: false),
+                    Direction = table.Column<byte>(type: "tinyint", nullable: false),
+                    DepartureTime = table.Column<TimeOnly>(type: "time", nullable: false),
+                    EncodedPolyline = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RouteDetail", x => x.RouteDetailId);
+                    table.ForeignKey(
+                        name: "FK_RouteDetail_Routes_RouteId",
+                        column: x => x.RouteId,
+                        principalTable: "Routes",
+                        principalColumn: "RouteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Trips",
                 columns: table => new
                 {
@@ -180,6 +205,26 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                         principalTable: "Vehicles",
                         principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RouteH3",
+                columns: table => new
+                {
+                    H3Cell = table.Column<long>(type: "bigint", nullable: false),
+                    RouteDetailId = table.Column<int>(type: "int", nullable: false),
+                    Sequence = table.Column<short>(type: "smallint", nullable: false),
+                    DepartureTime = table.Column<TimeOnly>(type: "time", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RouteH3", x => new { x.RouteDetailId, x.H3Cell });
+                    table.ForeignKey(
+                        name: "FK_RouteH3_RouteDetail_RouteDetailId",
+                        column: x => x.RouteDetailId,
+                        principalTable: "RouteDetail",
+                        principalColumn: "RouteDetailId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -280,6 +325,17 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RouteDetail_RouteId",
+                table: "RouteDetail",
+                column: "RouteId");
+
+            migrationBuilder.CreateIndex(
+                name: "RouteH3_H3Cell_DepartureTime",
+                table: "RouteH3",
+                columns: new[] { "H3Cell", "DepartureTime" })
+                .Annotation("SqlServer:Include", new[] { "RouteDetailId", "Sequence" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Routes_EmployeeId",
                 table: "Routes",
                 column: "EmployeeId");
@@ -325,19 +381,25 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                 name: "CostTransactions");
 
             migrationBuilder.DropTable(
+                name: "RouteH3");
+
+            migrationBuilder.DropTable(
                 name: "Trips");
 
             migrationBuilder.DropTable(
-                name: "Routes");
+                name: "RouteDetail");
 
             migrationBuilder.DropTable(
                 name: "Vehicles");
 
             migrationBuilder.DropTable(
-                name: "Zones");
+                name: "Routes");
 
             migrationBuilder.DropTable(
                 name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Zones");
 
             migrationBuilder.DropTable(
                 name: "Departments");
