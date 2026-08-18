@@ -8,6 +8,6 @@
     "\\CarpoolSystem.Domain\\Entities",
     "\\CarpoolSystem.Infrastructure.Sqlserver"
   ],
-  "SelectedNode": "\\CarpoolSystem.Application\\DTOs\\CostDTOs.cs",
+  "SelectedNode": "\\CarpoolSystem.Domain\\Entities\\Role.cs",
   "PreviewInSolutionExplorer": false
 }
