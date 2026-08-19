@@ -1,0 +1,187 @@
+:host {
+  --map-height: 60vh;
+  --card-width: 280px;
+  --card-height: 50px;
+  --card-border-radius: 8px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --brand-color: #3b82f6;
+  --brand-color-hover: #2563eb;
+  --spacing-md: 16px;
+  --spacing-sm: 8px;
+  --transition-speed: 300ms;
+}
+
+.form-control-btn {
+  padding: 5px;
+  border: 1px;
+  border-radius: 5px;
+  background: #2d8c38;
+  outline: none;
+}
+.form-control-btn:hover {
+  cursor: pointer;
+}
+
+.map-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: #f9fafb;
+}
+
+.geo-search {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.geo-search.open {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.geo-search input {
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f3f4f6;
+  color: #111827;
+  outline: none;
+}
+
+.geo-search input:focus {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.geo-search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--brand-color);
+  cursor: pointer;
+}
+
+.geo-search button svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.map-container {
+  flex: 1;
+  min-height: var(--map-height);
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid #e5e7eb;
+}
+
+.map-container ::ng-deep .leaflet-container {
+  background: #e5e7eb;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.route-cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.route-card {
+  flex: 0 0 var(--card-width);
+  min-width: var(--card-width);
+  height: var(--card-height);
+  padding: var(--spacing-md);
+  border: 2px solid #e5e7eb;
+  border-radius: var(--card-border-radius);
+  background: #fff;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+  user-select: none;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.route-card:hover {
+  border-color: var(--brand-color);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  background: #f0f9ff;
+  color: var(--brand-color);
+}
+
+.route-card:active {
+  border-color: var(--brand-color);
+  background: var(--brand-color);
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .map-layout {
+    background: #111827;
+  }
+
+  .geo-search {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .geo-search input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+
+  .map-container {
+    border-color: #374151;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .map-container ::ng-deep .leaflet-container {
+    background: #1f2937;
+  }
+
+  .route-card {
+    background: #1f2937;
+    border-color: #374151;
+    color: #e5e7eb;
+  }
+}
+
+@media (max-height: 600px) {
+  .route-cards-container {
+    flex-wrap: wrap;
+  }
+}
+
+::ng-deep .marker-pickup {
+  filter: hue-rotate(-15deg) saturate(1.2) brightness(0.95);
+}
+
+::ng-deep .marker-dropoff {
+  filter: hue-rotate(45deg) saturate(1.2) brightness(0.95);
+}
+

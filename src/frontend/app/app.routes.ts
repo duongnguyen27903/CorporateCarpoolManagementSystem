@@ -55,6 +55,10 @@ export const routes: Routes = [
         path: 'profile',
         loadComponent: () => import('./features/profile/profile.page').then(m => m.ProfilePage)
       },
+      { // add map.page.ts
+        path:'map',
+        loadComponent:() =>import('./features/matching/map.page').then(m => m.MapPage)
+      },
       {
         path: 'admin',
         children: [

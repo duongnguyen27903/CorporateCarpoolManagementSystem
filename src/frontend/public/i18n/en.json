@@ -1,0 +1,28 @@
+{
+  "auth": {
+    "login": "Login",
+    "signInToContinue": "Sign in to continue",
+    "email": "Email",
+    "password": "Password",
+    "invalidCredentials": "Invalid email or password"
+  },
+  "common": {
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "loading": "Loading"
+  },
+  "users": {
+    "title": "Users",
+    "create": "Create user",
+    "search": "Search users",
+    "name": "Name",
+    "username": "Username",
+    "email": "Email",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "empty": "No users found",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}

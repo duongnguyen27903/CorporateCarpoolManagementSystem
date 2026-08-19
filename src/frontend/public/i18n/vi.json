@@ -1,0 +1,28 @@
+{
+  "auth": {
+    "login": "Đăng nhập",
+    "signInToContinue": "Đăng nhập để tiếp tục",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "invalidCredentials": "Email hoặc mật khẩu không hợp lệ"
+  },
+  "common": {
+    "error": "Đã xảy ra lỗi",
+    "retry": "Thử lại",
+    "loading": "Đang tải"
+  },
+  "users": {
+    "title": "Người dùng",
+    "create": "Tạo người dùng",
+    "search": "Tìm kiếm người dùng",
+    "name": "Tên",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "actions": "Hành động",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "empty": "Không có người dùng nào",
+    "cancel": "Hủy",
+    "save": "Lưu"
+  }
+}
