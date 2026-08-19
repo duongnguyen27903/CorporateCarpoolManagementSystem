@@ -2,12 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\CarpoolSystem.API",
+    "\\CarpoolSystem.API\\Controllers",
+    "\\CarpoolSystem.API\\DTOs",
     "\\CarpoolSystem.Application",
     "\\CarpoolSystem.Application\\DTOs",
+    "\\CarpoolSystem.Application\\Interfaces",
+    "\\CarpoolSystem.Application\\Services",
     "\\CarpoolSystem.Domain",
     "\\CarpoolSystem.Domain\\Entities",
     "\\CarpoolSystem.Infrastructure.Sqlserver"
   ],
-  "SelectedNode": "\\CarpoolSystem.Domain\\Entities\\Role.cs",
+  "SelectedNode": "\\CarpoolSystem.Application\\DTOs\\TripDTOs.cs",
   "PreviewInSolutionExplorer": false
 }
