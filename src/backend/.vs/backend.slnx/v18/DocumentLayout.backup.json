@@ -67,8 +67,7 @@
               "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\Route.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAwCAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:34:33.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:34:33.868Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\Department.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:34:04.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:34:04.643Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "CarpoolSystem.Domain\\Entities\\Vehicle.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwBsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:32:18.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:32:18.996Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "CarpoolSystem.Application\\Services\\IEmployeeService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:23:45.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:23:45.897Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "CarpoolSystem.Application\\Services\\EmployeeService.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAAwF8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:23:00.021Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:23:00.021Z"
             },
             {
               "$type": "Document",
@@ -132,8 +127,7 @@
               "RelativeToolTip": "CarpoolSystem.API\\Controllers\\EmployeeController.cs",
               "ViewState": "AgIAAEQAAAAAAAAAAAAAwEwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T09:21:14.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T09:21:14.002Z"
             },
             {
               "$type": "Document",
@@ -145,8 +139,7 @@
               "RelativeToolTip": "CarpoolSystem.API\\Program.cs",
               "ViewState": "AgIAAKYBAAAAAAAAAAAAALEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-07T11:05:06.928Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-07T11:05:06.928Z"
             }
           ]
         }

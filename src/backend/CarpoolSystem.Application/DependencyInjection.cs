@@ -21,6 +21,8 @@ namespace CarpoolSystem.Application
             services.AddScoped<IMatchingService, MatchingService>();
             services.AddScoped<TokenService>();
 
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IRoleService, RoleService>();
             return services;
         }
     }
