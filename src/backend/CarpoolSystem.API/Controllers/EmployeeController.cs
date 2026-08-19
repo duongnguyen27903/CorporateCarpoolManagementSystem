@@ -53,5 +53,39 @@ namespace CarpoolSystem.API.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetMyProfile()
+        {
+            var employeeIdClaim = User.Claims
+                .FirstOrDefault(c => c.Type == "employeeId")
+                ?.Value;
+
+            if (employeeIdClaim == null ||
+                !int.TryParse(employeeIdClaim, out var employeeId))
+            {
+                return Unauthorized();
+            }
+
+            var employee = await _employeeService.GetEmployeeByIdAsync(employeeId);
+
+            if (employee == null)
+            {
+                return NotFound("Employee not found");
+            }
+
+            var response = new EmployeeResponse(
+                employee.EmployeeId,
+                employee.FullName,
+                employee.Email,
+                employee.Phone,
+                employee.DepartmentId,
+                employee.RoleId,
+                employee.IsActive,
+                employee.CreatedAt
+            );
+
+            return Ok(response);
+        }
     }
 }
