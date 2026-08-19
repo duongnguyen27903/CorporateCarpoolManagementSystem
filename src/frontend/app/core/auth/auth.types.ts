@@ -2,6 +2,7 @@ export interface AuthUser {
   id: number
   name: string
   email: string
+  role: string
 }
 
 export interface LoginPayload {
@@ -12,5 +13,7 @@ export interface LoginPayload {
 export interface LoginResponse {
   accessToken: string
   refreshToken?: string
-  user: AuthUser
+  employeeId: number
+  fullName: string
+  role: string
 }

@@ -96,6 +96,12 @@ namespace CarpoolSystem.Application.Services
             return employee;
         }
 
+        public async Task<Employee?> GetEmployeeByIdAsync(int employeeId)
+        {
+            var repo = _unitOfWork.Repository<Employee>();
+            return await repo.GetByIdAsync(employeeId);
+        }
+
         public async Task<IEnumerable<Employee>> GetEmployeesByDepartmentAsync(int departmentId, int pageNumber, int pageSize)
         {
             var repo = _unitOfWork.Repository<Employee>();
