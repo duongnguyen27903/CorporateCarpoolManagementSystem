@@ -10,8 +10,6 @@ import { CommonModule } from '@angular/common';
 import {
   ProfileService,
   EmployeeProfile,
-  Department,
-  Role,
   Vehicle,
   Route,
   Zone
@@ -211,8 +209,11 @@ import {
 
               </p>
 
-              <p class="font-semibold text-gray-900">
-                {{ department?.departmentName || 'Loading department...' }}
+              <p
+                class="font-semibold text-gray-900">
+
+                Department ID: {{ profile.departmentId }}
+
               </p>
             </div>
 
@@ -246,8 +247,11 @@ import {
 
               </p>
 
-              <p class="font-semibold text-gray-900">
-                {{ role?.roleName || 'Loading role...' }}
+              <p
+                class="font-semibold text-gray-900">
+
+                Role ID: {{ profile.roleId }}
+
               </p>
             </div>
 
@@ -823,10 +827,6 @@ export class ProfilePage implements OnInit {
 
   zones: Record<number, Zone> = {};
 
-  department: Department | null = null;
-
-  role: Role | null = null;
-
   // =========================
   // UI STATE
   // =========================
@@ -877,9 +877,6 @@ export class ProfilePage implements OnInit {
       console.log('Profile assigned:', this.profile);
       console.log('Loading:', this.loading);
 
-      this.loadDepartment(profile.departmentId);
-
-      this.loadRole(profile.roleId);
       // Sau khi profile đã hiển thị,
       // tiếp tục lấy dữ liệu phụ
       this.loadVehicles();
@@ -1024,210 +1021,139 @@ export class ProfilePage implements OnInit {
 
   loadZones(): void {
 
-    console.log('========== LOAD ZONES ==========');
-    console.log('Loading zones for routes...');
+  console.log('========== LOAD ZONES ==========');
+  console.log('Loading zones for routes...');
 
-    const zoneIds = new Set<number>();
+  const zoneIds = new Set<number>();
 
-    // ================================
-    // Lấy tất cả Zone ID từ Routes
-    // ================================
+  // ================================
+  // Lấy tất cả Zone ID từ Routes
+  // ================================
 
-    for (const route of this.routes) {
+  for (const route of this.routes) {
 
-      if (route.startZoneId != null) {
-        zoneIds.add(route.startZoneId);
-      }
-
-      if (route.endZoneId != null) {
-        zoneIds.add(route.endZoneId);
-      }
-
+    if (route.startZoneId != null) {
+      zoneIds.add(route.startZoneId);
     }
 
-    const ids = Array.from(zoneIds);
-
-    console.log('Zone IDs:', ids);
-
-    // ================================
-    // Không có route / không có zone
-    // ================================
-
-    if (ids.length === 0) {
-
-      console.log('No zones required.');
-
-      this.loading = false;
-
-      return;
-
-    }
-
-    // ================================
-    // Đếm số request Zone
-    // ================================
-
-    let completedRequests = 0;
-
-    // ================================
-    // Gọi GET /api/Zone/{id}
-    // ================================
-
-    for (const zoneId of ids) {
-
-      console.log(
-        `Calling GET /api/Zone/${zoneId}...`
-      );
-
-      this.profileService.getZone(zoneId).subscribe({
-
-        // ================================
-        // SUCCESS
-        // ================================
-
-        next: zone => {
-
-          console.log(
-            `GET /api/Zone/${zoneId} SUCCESS:`,
-            zone
-          );
-
-          if (zone) {
-
-            this.zones[zone.zoneId] = zone;
-
-            console.log(
-              'Zones updated:',
-              this.zones
-            );
-
-          }
-
-        },
-
-        // ================================
-        // ERROR
-        // ================================
-
-        error: error => {
-
-          console.error(
-            `GET /api/Zone/${zoneId} FAILED:`,
-            error
-          );
-
-        },
-
-        // ================================
-        // COMPLETE
-        // ================================
-
-        complete: () => {
-
-          completedRequests++;
-
-          console.log(
-            `Zone request completed: ${completedRequests}/${ids.length}`
-          );
-
-          /*
-          * Tất cả Zone API đã hoàn thành
-          */
-          if (completedRequests === ids.length) {
-
-            console.log(
-              '========== ALL ZONES LOADED =========='
-            );
-
-            console.log(
-              'Final zones:',
-              this.zones
-            );
-            // Cập nhật UI khi có lỗi
-            this.cdr.detectChanges();
-            this.loading = false;
-
-          }
-
-        }
-
-      });
-
+    if (route.endZoneId != null) {
+      zoneIds.add(route.endZoneId);
     }
 
   }
 
-  loadDepartment(departmentId: number): void {
+  const ids = Array.from(zoneIds);
+
+  console.log('Zone IDs:', ids);
+
+  // ================================
+  // Không có route / không có zone
+  // ================================
+
+  if (ids.length === 0) {
+
+    console.log('No zones required.');
+
+    this.loading = false;
+
+    return;
+
+  }
+
+  // ================================
+  // Đếm số request Zone
+  // ================================
+
+  let completedRequests = 0;
+
+  // ================================
+  // Gọi GET /api/Zone/{id}
+  // ================================
+
+  for (const zoneId of ids) {
 
     console.log(
-      `Calling GET /api/Department/${departmentId}...`
+      `Calling GET /api/Zone/${zoneId}...`
     );
 
-    this.profileService
-      .getDepartment(departmentId)
-      .subscribe({
+    this.profileService.getZone(zoneId).subscribe({
 
-        next: department => {
+      // ================================
+      // SUCCESS
+      // ================================
+
+      next: zone => {
+
+        console.log(
+          `GET /api/Zone/${zoneId} SUCCESS:`,
+          zone
+        );
+
+        if (zone) {
+
+          this.zones[zone.zoneId] = zone;
 
           console.log(
-            `GET /api/Department/${departmentId} SUCCESS:`,
-            department
+            'Zones updated:',
+            this.zones
           );
-
-          this.department = department;
-
-        },
-
-        error: error => {
-
-          console.error(
-            `GET /api/Department/${departmentId} FAILED:`,
-            error
-          );
-
-          this.department = null;
 
         }
 
-      });
+      },
 
-  }
+      // ================================
+      // ERROR
+      // ================================
 
-  loadRole(roleId: number): void {
+      error: error => {
 
-    console.log(
-      `Calling GET /api/Role/${roleId}...`
-    );
+        console.error(
+          `GET /api/Zone/${zoneId} FAILED:`,
+          error
+        );
 
-    this.profileService
-      .getRole(roleId)
-      .subscribe({
+      },
 
-        next: role => {
+      // ================================
+      // COMPLETE
+      // ================================
+
+      complete: () => {
+
+        completedRequests++;
+
+        console.log(
+          `Zone request completed: ${completedRequests}/${ids.length}`
+        );
+
+        /*
+         * Tất cả Zone API đã hoàn thành
+         */
+        if (completedRequests === ids.length) {
 
           console.log(
-            `GET /api/Role/${roleId} SUCCESS:`,
-            role
+            '========== ALL ZONES LOADED =========='
           );
 
-          this.role = role;
-
-        },
-
-        error: error => {
-
-          console.error(
-            `GET /api/Role/${roleId} FAILED:`,
-            error
+          console.log(
+            'Final zones:',
+            this.zones
           );
-
-          this.role = null;
+          // Cập nhật UI khi có lỗi
+          this.cdr.detectChanges();
+          this.loading = false;
 
         }
 
-      });
+      }
+
+    });
 
   }
+
+}
+
   // =========================
   // ZONE NAME
   // =========================

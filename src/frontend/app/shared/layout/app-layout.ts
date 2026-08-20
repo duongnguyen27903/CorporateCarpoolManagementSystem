@@ -349,25 +349,6 @@ export class AppLayoutComponent {
       `
     },
     {
-      label: 'My Routes',
-      route: '/routes',
-      exact: false,
-      icon: `
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="6" cy="6" r="3"></circle>
-          <circle cx="18" cy="18" r="3"></circle>
-          <path d="M8.5 7.5 15.5 16.5"></path>
-        </svg>
-      `
-    },
-    {
       label: 'Create Trip',
       route: '/trips/create',
       exact: false,

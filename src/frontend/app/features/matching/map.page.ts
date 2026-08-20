@@ -257,7 +257,7 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
 
         this.routes = matches.map((route: any, index: number) => ({
           id: String(route.routeDetailId ?? route.id ?? route.routeId ?? index + 1),
-          name: route.routeDetailName ?? route.name ?? `Route ${index + 1}`,
+          name: route.direction ? `Route ${route.direction}` : `Route ${route.routeId ?? route.routeDetailId ?? index + 1}`,
           encodedPolyline: route.encodedPolyline ?? '',
         }));
         //create a div contain this.routes[i].id and append it to <div class="route-cards-container"> in map.page.html

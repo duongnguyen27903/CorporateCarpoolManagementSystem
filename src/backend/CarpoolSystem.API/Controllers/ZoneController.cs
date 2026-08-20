@@ -71,14 +71,5 @@ namespace CarpoolSystem.API.Controllers
             if (!result) return NotFound();
             return NoContent();
         }
-
-        // 5. Get all zones
-        [HttpGet]
-        public async Task<IActionResult> GetAllZones()
-        {
-            var zones = await _zoneService.GetAllZonesAsync();
-
-            return Ok(zones);
-        }
     }
 }

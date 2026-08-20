@@ -32,10 +32,6 @@ export const routes: Routes = [
         loadComponent: () => import('./features/rides/find-rides.page').then(m => m.FindRidesPage)
       },
       {
-        path: 'routes',
-        loadComponent: () => import('./features/routes/routes.page').then(m => m.RoutesPage)
-      },
-      {
         path: 'trips/create',
         loadComponent: () => import('./features/trips/create-trip.page').then(m => m.CreateTripPage)
       },
