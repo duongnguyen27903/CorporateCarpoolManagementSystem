@@ -65,7 +65,7 @@ namespace CarpoolSystem.Application.Services
             return await _unitOfWork.Repository<RouteDetail>().GetByIdAsync(routeDetailId);
         }
 
-        public async Task UpdateRouteDetailAsync(int routeId, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells)
+        public async Task UpdateRouteDetailAsync(int routeId,string? routeDetailName, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells)
         {
             await _unitOfWork.BeginTransactionAsync();
             try
@@ -76,6 +76,7 @@ namespace CarpoolSystem.Application.Services
 
                 // 1. Update route
                 route.EncodedPolyline = encodedPolyline;
+                route.RouteDetailName = routeDetailName;
                 _unitOfWork.Repository<RouteDetail>().Update(route);
 
                 // 2. Remove old H3 cells

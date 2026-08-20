@@ -30,6 +30,7 @@ namespace CarpoolSystem.API.Controllers
             var routeDetail = new RouteDetail
             {
                 RouteId = request.RouteId,
+                RouteDetailName = request.RouteDetailName,
                 Direction = request.Direction,
                 DepartureTime = request.DepartureTime,
                 EncodedPolyline = request.EncodedPolyline
@@ -91,8 +92,7 @@ namespace CarpoolSystem.API.Controllers
                 Sequence = (short)idx,
                 DepartureTime = departure
             }).ToList();
-
-            await _routeDetailService.UpdateRouteDetailAsync(routeDetailId, request.EncodedPolyline, h3Entities);
+            await _routeDetailService.UpdateRouteDetailAsync(routeDetailId, request.RouteDetailName, request.EncodedPolyline, h3Entities);
             return NoContent();
         }
     }
@@ -104,10 +104,12 @@ namespace CarpoolSystem.API.Controllers
         public byte Direction { get; set; }
         public TimeOnly DepartureTime { get; set; }
         public required string EncodedPolyline { get; set; }
+        public string? RouteDetailName { get; set; }
     }
 
     public class UpdateRouteDetailRequest
     {
+        public string ? RouteDetailName { get; set; }
         public required string EncodedPolyline { get; set; }
         public TimeOnly DepartureTime { get; set; } // made nullable
     }

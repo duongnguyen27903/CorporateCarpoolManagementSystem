@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 {
     /// <inheritdoc />
-    public partial class AddMatching : Migration
+    public partial class InitTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -154,6 +154,7 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                 {
                     RouteDetailId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    RouteDetailName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RouteId = table.Column<int>(type: "int", nullable: false),
                     Direction = table.Column<byte>(type: "tinyint", nullable: false),
                     DepartureTime = table.Column<TimeOnly>(type: "time", nullable: false),

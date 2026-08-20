@@ -95,6 +95,9 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Persistence
 
                 entity.Property(x => x.RouteDetailId)
                     .ValueGeneratedOnAdd();
+                
+                entity.Property(x => x.RouteDetailName)
+                    .IsRequired(false);
 
                 entity.Property(x => x.RouteId)
                     .IsRequired();

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 {
     [DbContext(typeof(CarpoolDbContext))]
-    [Migration("20260814035148_AddMatching")]
-    partial class AddMatching
+    [Migration("20260820074000_InitTable")]
+    partial class InitTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,6 +263,9 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
 
                     b.Property<string>("EncodedPolyline")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RouteDetailName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RouteId")

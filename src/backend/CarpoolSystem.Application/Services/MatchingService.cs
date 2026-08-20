@@ -72,6 +72,7 @@ namespace CarpoolSystem.Application.Services
             var result = matchedRouteDetails.Select(rd => new RouteDetailResponseDto
             {
                 RouteDetailId = rd.RouteDetailId,
+                RouteDetailName = rd.RouteDetailName,
                 RouteId = rd.RouteId,
                 Direction = rd.Direction,
                 DepartureTime = rd.DepartureTime,

@@ -262,6 +262,9 @@ namespace CarpoolSystem.Infrastructure.Sqlserver.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RouteDetailName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RouteId")
                         .HasColumnType("int");
 
