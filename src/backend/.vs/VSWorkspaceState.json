@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\CarpoolSystem.API",
-    "\\CarpoolSystem.API\\Controllers",
     "\\CarpoolSystem.API\\DTOs",
     "\\CarpoolSystem.Application",
     "\\CarpoolSystem.Application\\DTOs",
@@ -12,6 +11,6 @@
     "\\CarpoolSystem.Domain\\Entities",
     "\\CarpoolSystem.Infrastructure.Sqlserver"
   ],
-  "SelectedNode": "\\CarpoolSystem.Application\\DTOs\\TripDTOs.cs",
+  "SelectedNode": "\\CarpoolSystem.Application\\Services\\RouteService.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -43,6 +43,13 @@ export interface Route {
   isActive: boolean;
 }
 
+export interface RouteInput {
+  startZoneId: number;
+  endZoneId: number;
+  startTime: string;
+  daysOfWeek: string;
+}
+
 export interface Zone {
   zoneId: number;
   zoneName: string;
@@ -124,6 +131,26 @@ export class ProfileService {
 
   }
 
+  createRoute(input: RouteInput): Observable<Route> {
+    return this.http.post<Route>(
+      `${this.apiUrl}/route`,
+      input
+    );
+  }
+
+  updateRoute(routeId: number, input: RouteInput): Observable<Route> {
+    return this.http.put<Route>(
+      `${this.apiUrl}/route/${routeId}`,
+      input
+    );
+  }
+
+  deleteRoute(routeId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiUrl}/route/${routeId}`
+    );
+  }
+
 
   /**
    * GET /api/Zone/{id}
@@ -136,6 +163,12 @@ export class ProfileService {
       `${this.apiUrl}/Zone/${zoneId}`
     );
 
+  }
+
+  getZones(): Observable<Zone[]> {
+    return this.http.get<Zone[]>(
+      `${this.apiUrl}/Zone`
+    );
   }
 
 }
