@@ -1,21 +1,39 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TripService } from './trip.service';
+import { AuthStore } from '../../core/auth/auth.store';
+import { ProfileService, Route, Vehicle, Zone } from '../../../src/app/services/profile.service';
+import { TripService } from '../../../src/app/services/trip.service';
+
+function getLocalDateValue(): string {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 @Component({
   selector: 'app-create-trip',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="mx-auto max-w-6xl space-y-6 pb-12">
+    @if (isDriver) {
+    <div class="mx-auto max-w-6xl space-y-6 pb-12 text-gray-800">
       
       <!-- Tiêu đề đầu trang -->
       <div>
         <h1 class="text-2xl font-bold text-gray-900">Publish a Ride</h1>
-        <p class="mt-1 text-sm text-gray-500">Offer empty seats to colleagues and share commute costs.</p>
+        <p class="mt-1 text-sm text-gray-700">Offer empty seats to colleagues and share commute costs.</p>
       </div>
+
+      @if (loading) {
+        <p class="rounded-lg bg-blue-50 p-4 text-sm text-blue-700">Loading your routes and vehicles...</p>
+      }
+      @if (errorMessage) {
+        <p class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">{{ errorMessage }}</p>
+      }
 
       <!-- Khung chính chia 2 cột (Trái: Wizard 4 bước, Phải: Trip Summary) -->
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -62,28 +80,17 @@ import { TripService } from './trip.service';
               
               <div class="space-y-4">
                 <div>
-                  <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Leaving from</label>
+                  <label class="block text-sm font-bold text-gray-800 mb-1">Select route</label>
                   <div class="relative">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">📍</span>
-                    <input type="text" [(ngModel)]="formData.startPoint" placeholder="Enter starting address or office location" class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-600">↔</span>
+                    <select [(ngModel)]="formData.routeId" name="routeId" (ngModelChange)="selectRoute($event)" class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm text-gray-900 focus:border-blue-500 focus:outline-none">
+                      <option [ngValue]="null">Choose one of your saved routes</option>
+                      @for (route of routes; track route.routeId) {
+                        <option [ngValue]="route.routeId">{{ routeLabel(route) }}</option>
+                      }
+                    </select>
                   </div>
-                  <p class="mt-1 text-[11px] text-gray-400">Your current location or a specific pickup spot.</p>
-                </div>
-
-                <div class="flex justify-center">
-                  <div class="rounded-full border border-gray-200 bg-gray-50 p-2 text-gray-500 shadow-sm">↕</div>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Going to</label>
-                  <div class="relative">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">🏁</span>
-                    <input type="text" [(ngModel)]="formData.endPoint" placeholder="Enter destination address or office location" class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none">
-                  </div>
-                </div>
-
-                <div>
-                  <button type="button" class="text-sm font-semibold text-blue-600 hover:underline">+ Add a stopover (optional)</button>
+                  <p class="mt-1 text-xs text-gray-600">{{ formData.startPoint }} <span class="font-semibold">to</span> {{ formData.endPoint }}</p>
                 </div>
               </div>
 
@@ -103,27 +110,28 @@ import { TripService } from './trip.service';
 
               <div class="space-y-5">
                 <div>
-                  <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Departure Time</label>
-                  <input type="time" [(ngModel)]="formData.departureTime" class="w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:outline-none">
+                  <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Departure Date</label>
+                  <input type="date" [(ngModel)]="formData.departureDate" name="departureDate" class="w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:outline-none">
                 </div>
 
                 <div>
                   <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Frequency</label>
                   <div class="flex gap-2 p-1 bg-gray-100 rounded-lg w-fit">
-                    <button (click)="formData.isRecurring = false" [class.bg-white]="!formData.isRecurring" [class.shadow-sm]="!formData.isRecurring" class="rounded-md px-4 py-1.5 text-sm font-semibold">One-time trip</button>
-                    <button (click)="formData.isRecurring = true" [class.bg-white]="formData.isRecurring" [class.shadow-sm]="formData.isRecurring" class="rounded-md px-4 py-1.5 text-sm font-semibold">Recurring trip</button>
+                    <button type="button" (click)="setFrequency(false)" [class.bg-white]="!formData.isRecurring" [class.shadow-sm]="!formData.isRecurring" class="rounded-md px-4 py-1.5 text-sm font-semibold">One-time trip</button>
+                    <button type="button" (click)="setFrequency(true)" [class.bg-white]="formData.isRecurring" [class.shadow-sm]="formData.isRecurring" class="rounded-md px-4 py-1.5 text-sm font-semibold">Recurring trip</button>
                   </div>
                 </div>
 
                 @if (formData.isRecurring) {
                   <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 space-y-3">
-                    <label class="block text-xs font-bold uppercase text-gray-500">Active Days</label>
-                    <div class="flex gap-2">
-                      @let days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-                      @for (d of days; track $index) {
-                        <button class="h-9 w-9 rounded-full bg-blue-600 text-xs font-bold text-white flex items-center justify-center">{{ d }}</button>
-                      }
-                    </div>
+                    <p class="text-sm font-semibold text-gray-800">Schedule from selected route</p>
+                    <p class="text-sm text-gray-700">Days: {{ recurringDaysLabel() }}</p>
+                    <p class="text-sm text-gray-700">Departure time: {{ recurringTimeLabel() }}</p>
+                  </div>
+                } @else {
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Departure Time</label>
+                    <input type="time" [(ngModel)]="formData.departureTime" name="departureTime" class="w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:outline-none">
                   </div>
                 }
               </div>
@@ -142,19 +150,17 @@ import { TripService } from './trip.service';
               <p class="text-sm text-gray-500">Which car will you be driving for this trip?</p>
 
               <div class="space-y-3">
-                <div class="rounded-xl border-2 border-blue-600 bg-blue-50/40 p-4 flex items-center justify-between cursor-pointer">
-                  <div>
-                    <p class="font-bold text-gray-900">Toyota Camry</p>
-                    <p class="text-xs text-gray-500">White &bull; 4 Seats</p>
-                  </div>
-                  <span class="text-blue-600 font-bold">✔</span>
-                </div>
-                <div class="rounded-xl border border-gray-200 bg-white p-4 flex items-center justify-between cursor-pointer hover:border-gray-300">
-                  <div>
-                    <p class="font-bold text-gray-900">Honda Civic</p>
-                    <p class="text-xs text-gray-500">Silver &bull; 4 Seats</p>
-                  </div>
-                </div>
+                @for (vehicle of vehicles; track vehicle.vehicleId) {
+                  <button type="button" (click)="selectVehicle(vehicle)" class="w-full rounded-xl border p-4 flex items-center justify-between text-left cursor-pointer hover:border-blue-300" [class.border-2]="formData.vehicleId === vehicle.vehicleId" [class.border-blue-600]="formData.vehicleId === vehicle.vehicleId" [class.bg-blue-50]="formData.vehicleId === vehicle.vehicleId" [class.border-gray-200]="formData.vehicleId !== vehicle.vehicleId">
+                    <div>
+                      <p class="font-bold text-gray-900">{{ vehicle.vehicleType }} · {{ vehicle.licensePlate }}</p>
+                      <p class="text-xs text-gray-500">{{ vehicle.seatCount }} Seats</p>
+                    </div>
+                    @if (formData.vehicleId === vehicle.vehicleId) { <span class="text-blue-600 font-bold">✔</span> }
+                  </button>
+                } @empty {
+                  <p class="rounded-lg bg-gray-50 p-4 text-sm text-gray-500">No active vehicles found. Add a vehicle in your profile first.</p>
+                }
               </div>
 
               <div class="rounded-xl border border-gray-200 bg-white p-6 space-y-4">
@@ -163,9 +169,9 @@ import { TripService } from './trip.service';
                   <span class="rounded-md bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">Available Seats: {{ formData.availableSeats }}</span>
                 </div>
                 <div class="flex items-center justify-center gap-4 py-3 bg-gray-50 rounded-xl">
-                  <button (click)="decreaseSeats()" class="h-10 w-10 rounded-full border border-gray-300 bg-white font-bold text-lg hover:bg-gray-100">-</button>
+                  <button (click)="decreaseSeats()" [disabled]="formData.availableSeats <= 1" class="h-10 w-10 rounded-full border border-gray-300 bg-white font-bold text-lg hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40">-</button>
                   <span class="text-2xl font-black text-gray-900">{{ formData.availableSeats }}</span>
-                  <button (click)="increaseSeats()" class="h-10 w-10 rounded-full bg-blue-600 font-bold text-lg text-white hover:bg-blue-700">+</button>
+                  <button (click)="increaseSeats()" [disabled]="formData.availableSeats >= maxAvailableSeats" class="h-10 w-10 rounded-full bg-blue-600 font-bold text-lg text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40">+</button>
                 </div>
               </div>
 
@@ -190,20 +196,24 @@ import { TripService } from './trip.service';
                 </div>
                 <div>
                   <p class="text-xs font-bold text-gray-400 uppercase">Schedule</p>
-                  <p class="font-bold text-gray-900 mt-1">Departure</p>
-                  <p class="text-gray-500">{{ formData.departureTime || '08:00 AM' }}</p>
+                  <p class="font-bold text-gray-900 mt-1">{{ formatDepartureDate() }}</p>
+                  <p class="text-gray-500">{{ displayDepartureTime() }}</p>
+                  <p class="mt-1 font-semibold text-blue-700">{{ frequencyLabel() }}</p>
+                  @if (formData.isRecurring) {
+                    <p class="text-gray-500">{{ recurringDaysLabel() }}</p>
+                  }
                 </div>
                 <div>
                   <p class="text-xs font-bold text-gray-400 uppercase">Vehicle</p>
-                  <p class="font-bold text-gray-900 mt-1">Toyota Camry</p>
+                  <p class="font-bold text-gray-900 mt-1">{{ selectedVehicle?.vehicleType || 'Not selected' }}</p>
                   <p class="text-gray-500">{{ formData.availableSeats }} seats available</p>
                 </div>
               </div>
 
               <div class="flex justify-between pt-4 border-t border-gray-100">
                 <button (click)="prevStep()" class="rounded-xl border border-gray-300 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50">Back</button>
-                <button (click)="publishTrip()" class="rounded-xl bg-green-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700">
-                  Complete & Publish Trip ✔
+                <button (click)="publishTrip()" [disabled]="publishing" class="rounded-xl bg-green-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50">
+                  {{ publishing ? 'Publishing...' : 'Complete & Publish Trip ✔' }}
                 </button>
               </div>
             </div>
@@ -219,19 +229,23 @@ import { TripService } from './trip.service';
             <div class="border-t border-gray-100 pt-3 space-y-3 text-sm">
               <div>
                 <p class="text-xs font-bold uppercase text-gray-400 mb-1">Route</p>
-                <p class="font-bold text-gray-900">📍 {{ formData.startPoint || 'San Francisco HQ' }}</p>
-                <p class="font-bold text-gray-900 mt-1">🏁 {{ formData.endPoint || 'San Jose Campus' }}</p>
+                <p class="font-bold text-gray-900">📍 {{ formData.startPoint || 'Select a route' }}</p>
+                <p class="font-bold text-gray-900 mt-1">🏁 {{ formData.endPoint || 'Select a route' }}</p>
               </div>
 
               <div class="border-t border-gray-100 pt-3">
                 <p class="text-xs font-bold uppercase text-gray-400 mb-1">Schedule</p>
-                <p class="font-medium text-gray-700">📅 Oct 24, 2023</p>
-                <p class="font-medium text-gray-700">⏰ {{ formData.departureTime || '08:00 AM' }} (PDT)</p>
+                <p class="font-medium text-gray-700">📅 {{ formatDepartureDate() }}</p>
+                <p class="font-medium text-gray-700">⏰ {{ displayDepartureTime() }}</p>
+                <p class="font-medium text-blue-700">{{ frequencyLabel() }}</p>
+                @if (formData.isRecurring) {
+                  <p class="font-medium text-gray-700">{{ recurringDaysLabel() }}</p>
+                }
               </div>
 
               <div class="border-t border-gray-100 pt-3">
                 <p class="text-xs font-bold uppercase text-gray-400 mb-1">Vehicle & Seats</p>
-                <p class="font-medium text-gray-700">🚗 Toyota Camry</p>
+                <p class="font-medium text-gray-700">🚗 {{ selectedVehicle?.vehicleType || 'Not selected' }}</p>
                 <p class="font-medium text-gray-700">💺 {{ formData.availableSeats }} seats available</p>
               </div>
             </div>
@@ -240,35 +254,128 @@ import { TripService } from './trip.service';
           <!-- Quick Route Suggestions (Frequent Routes từ ảnh mẫu) -->
           <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm space-y-3">
             <h3 class="font-bold text-gray-900 text-sm">Frequent Routes</h3>
-            <div (click)="selectFrequentRoute('San Francisco HQ', 'San Jose Campus')" class="rounded-lg border border-gray-100 bg-gray-50 p-3 cursor-pointer hover:bg-gray-100 transition-colors">
-              <p class="text-xs font-bold text-gray-900">San Francisco HQ &rarr; San Jose Campus</p>
-              <p class="text-[11px] text-gray-500">Usually departs around 8:00 AM</p>
-            </div>
-            <div (click)="selectFrequentRoute('San Jose Campus', 'San Francisco HQ')" class="rounded-lg border border-gray-100 bg-gray-50 p-3 cursor-pointer hover:bg-gray-100 transition-colors">
-              <p class="text-xs font-bold text-gray-900">San Jose Campus &rarr; San Francisco HQ</p>
-              <p class="text-[11px] text-gray-500">Usually departs around 5:30 PM</p>
-            </div>
+            @for (route of routes; track route.routeId) {
+                <button type="button" (click)="selectFrequentRoute(route)" class="w-full rounded-lg border border-gray-100 bg-gray-50 p-3 text-left hover:bg-gray-100 transition-colors">
+                  <p class="text-xs font-bold text-gray-900">{{ routeLabel(route) }}</p>
+                  <p class="text-[11px] text-gray-500">Usually departs around {{ route.startTime }}</p>
+                </button>
+            } @empty {
+              <p class="text-xs text-gray-500">No saved routes found.</p>
+            }
           </div>
 
         </div>
 
       </div>
     </div>
+    } @else {
+      <div class="mx-auto max-w-2xl rounded-xl border border-blue-100 bg-white p-8 text-center shadow-sm">
+        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-2xl text-blue-600">🚗</div>
+        <h1 class="mt-5 text-2xl font-bold text-gray-900">Register as a driver</h1>
+        <p class="mx-auto mt-3 max-w-lg text-sm leading-6 text-gray-600">
+          This feature is available for drivers only. Register your vehicle and driver information to publish a ride and offer seats to colleagues.
+        </p>
+        <button type="button" (click)="openProfile()" class="mt-6 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+          Go to profile
+        </button>
+      </div>
+    }
   `
 })
 export class CreateTripPage {
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
   private tripService = inject(TripService);
+  private profileService = inject(ProfileService);
+  private authStore = inject(AuthStore);
 
   step: number = 1;
+  routes: Route[] = [];
+  vehicles: Vehicle[] = [];
+  zones = new Map<number, Zone>();
+  loading = true;
+  publishing = false;
+  errorMessage = '';
+
+  get isDriver(): boolean {
+    return this.authStore.role()?.toLowerCase() === 'driver';
+  }
 
   formData = {
-    startPoint: 'San Francisco HQ',
-    endPoint: 'San Jose Campus',
+    routeId: null as number | null,
+    vehicleId: null as number | null,
+    startPoint: '',
+    endPoint: '',
+    departureDate: getLocalDateValue(),
     departureTime: '08:00',
     isRecurring: false,
     availableSeats: 3
   };
+
+  get selectedVehicle(): Vehicle | undefined {
+    return this.vehicles.find(vehicle => vehicle.vehicleId === this.formData.vehicleId);
+  }
+
+  get selectedRoute(): Route | undefined {
+    return this.routes.find(route => route.routeId === this.formData.routeId);
+  }
+
+  get maxAvailableSeats(): number {
+    return this.selectedVehicle?.seatCount ?? 1;
+  }
+
+  ngOnInit(): void {
+    if (!this.isDriver) {
+      this.loading = false;
+      return;
+    }
+
+    let loadedRequests = 0;
+    const markRequestLoaded = (): void => {
+      loadedRequests++;
+      this.loading = loadedRequests < 2;
+      this.cdr.detectChanges();
+    };
+
+    this.profileService.getMyRoutes().subscribe({
+      next: routes => {
+        this.routes = routes.filter(route => route.isActive);
+        if (this.routes.length > 0) this.selectRoute(this.routes[0].routeId);
+        markRequestLoaded();
+      },
+      error: error => {
+        console.error('Unable to load routes:', error);
+        this.errorMessage = 'Unable to load your routes. Please try again.';
+        markRequestLoaded();
+      }
+    });
+
+    this.profileService.getMyVehicles().subscribe({
+      next: vehicles => {
+        this.vehicles = vehicles.filter(vehicle => vehicle.isActive);
+        if (this.vehicles.length > 0) {
+          this.selectVehicle(this.vehicles[0]);
+        }
+        markRequestLoaded();
+      },
+      error: error => {
+        console.error('Unable to load vehicles:', error);
+        this.errorMessage = 'Unable to load your vehicles. Please try again.';
+        markRequestLoaded();
+      }
+    });
+
+    this.profileService.getZones().subscribe({
+      next: zones => {
+        zones.forEach(zone => this.zones.set(zone.zoneId, zone));
+        if (this.selectedRoute) this.selectRoute(this.selectedRoute.routeId);
+        this.cdr.detectChanges();
+      },
+      error: error => {
+        console.warn('Unable to load zone names:', error);
+      }
+    });
+  }
 
   nextStep() {
     if (this.step < 4) this.step++;
@@ -278,24 +385,126 @@ export class CreateTripPage {
     if (this.step > 1) this.step--;
   }
 
+  openProfile(): void {
+    this.router.navigate(['/profile']);
+  }
+
   increaseSeats() {
-    if (this.formData.availableSeats < 6) this.formData.availableSeats++;
+    if (this.formData.availableSeats < this.maxAvailableSeats) this.formData.availableSeats++;
   }
 
   decreaseSeats() {
     if (this.formData.availableSeats > 1) this.formData.availableSeats--;
   }
 
-  selectFrequentRoute(start: string, end: string) {
-    this.formData.startPoint = start;
-    this.formData.endPoint = end;
+  setFrequency(isRecurring: boolean): void {
+    this.formData.isRecurring = isRecurring;
+    if (isRecurring) {
+      this.formData.departureTime = this.routeTimeValue();
+    }
+  }
+
+  frequencyLabel(): string {
+    return this.formData.isRecurring ? 'Recurring trip' : 'One-time trip';
+  }
+
+  recurringDaysLabel(): string {
+    const days = this.selectedRoute?.daysOfWeek
+      ?.split(',')
+      .map(day => day.trim())
+      .filter(Boolean)
+      .map(day => this.abbreviateDay(day));
+
+    return days?.join(', ') || 'No days configured';
+  }
+
+  private abbreviateDay(day: string): string {
+    const normalizedDay = day.toLowerCase();
+    const abbreviations: Record<string, string> = {
+      '1': 'Sun', '2': 'Mon', '3': 'Tue', '4': 'Wed', '5': 'Thu', '6': 'Fri', '7': 'Sat',
+      monday: 'Mon', mon: 'Mon', mo: 'Mon', m: 'Mon',
+      tuesday: 'Tue', tue: 'Tue', tu: 'Tue', t: 'Tue',
+      wednesday: 'Wed', wed: 'Wed', we: 'Wed', w: 'Wed',
+      thursday: 'Thu', thu: 'Thu', th: 'Thu',
+      friday: 'Fri', fri: 'Fri', f: 'Fri',
+      saturday: 'Sat', sat: 'Sat', sa: 'Sat', s: 'Sat',
+      sunday: 'Sun', sun: 'Sun', su: 'Sun'
+    };
+
+    return abbreviations[normalizedDay] || day;
+  }
+
+  recurringTimeLabel(): string {
+    return this.selectedRoute ? this.formatTime(this.selectedRoute.startTime) : 'No time configured';
+  }
+
+  displayDepartureTime(): string {
+    return this.formData.isRecurring ? this.recurringTimeLabel() : this.formatTime(this.formData.departureTime);
+  }
+
+  private routeTimeValue(): string {
+    return this.selectedRoute?.startTime?.slice(0, 5) || '08:00';
+  }
+
+  private formatTime(value: string): string {
+    return value ? value.slice(0, 5) : 'Not set';
+  }
+
+  formatDepartureDate(): string {
+    const date = new Date(`${this.formData.departureDate}T12:00:00`);
+    return Number.isNaN(date.getTime())
+      ? this.formData.departureDate
+      : new Intl.DateTimeFormat('en-US', {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        }).format(date);
+  }
+
+  selectVehicle(vehicle: Vehicle): void {
+    this.formData.vehicleId = vehicle.vehicleId;
+    this.formData.availableSeats = Math.min(
+      Math.max(1, this.formData.availableSeats),
+      this.maxAvailableSeats
+    );
+  }
+
+  selectRoute(routeId: number | null) {
+    const route = this.routes.find(item => item.routeId === Number(routeId));
+    this.formData.routeId = route?.routeId ?? null;
+    this.formData.startPoint = route ? this.zoneName(route.startZoneId) : '';
+    this.formData.endPoint = route ? this.zoneName(route.endZoneId) : '';
+  }
+
+  selectFrequentRoute(route: Route) {
+    this.selectRoute(route.routeId);
+  }
+
+  routeLabel(route: Route): string {
+    return `${this.zoneName(route.startZoneId)} -> ${this.zoneName(route.endZoneId)}`;
+  }
+
+  private zoneName(zoneId: number): string {
+    return this.zones.get(zoneId)?.zoneName || `Zone #${zoneId}`;
   }
 
   publishTrip() {
+    const departureTime = this.formData.isRecurring
+      ? this.routeTimeValue()
+      : this.formData.departureTime;
+
+    if (!this.formData.routeId || !this.formData.vehicleId || !this.formData.departureDate || !departureTime || (this.formData.isRecurring && !this.selectedRoute?.daysOfWeek)) {
+      this.errorMessage = 'Select a route, vehicle, and departure date. One-time trips also require a departure time.';
+      return;
+    }
+
+    this.publishing = true;
+    this.errorMessage = '';
     const payload = {
-      routeId: '1', // Có thể điều chỉnh tùy chọn Route ID kết nối Backend
-      departureDate: '2026-08-14',
-      departureTime: this.formData.departureTime,
+      routeId: this.formData.routeId,
+      vehicleId: this.formData.vehicleId,
+      departureTime: `${this.formData.departureDate}T${departureTime}:00.000Z`,
       availableSeats: this.formData.availableSeats
     };
 
@@ -304,10 +513,10 @@ export class CreateTripPage {
         alert('Đăng ký chuyến đi thành công!');
         this.router.navigate(['/my-bookings']);
       },
-      error: () => {
-        // Dự phòng khi gọi API test không kết nối DB hoàn chỉnh
-        alert('Đăng ký chuyến đi thành công (Mock Mode)!');
-        this.router.navigate(['/my-bookings']);
+      error: error => {
+        console.error('Unable to publish trip:', error);
+        this.publishing = false;
+        this.errorMessage = error?.error?.message || 'Unable to publish the trip. Please try again.';
       }
     });
   }

@@ -11,6 +11,12 @@ export interface BookingResponse {
   bookingId: number;
   tripId: number;
   passengerId: number;
+  passengerName?: string;
+  passengerPhone?: string | null;
+  passenger?: {
+    fullName?: string;
+    phone?: string | null;
+  };
   status: string;
   cancelReason: string | null;
   checkInTime: string | null;
@@ -124,6 +130,17 @@ export class BookingService {
 
     return this.http.get<BookingResponse[]>(
       `${this.baseUrl}/booking/my-bookings`
+    );
+  }
+
+  /**
+   * GET /api/trip/{tripId}/bookings
+   *
+   * Get passenger requests for a driver's trip.
+   */
+  getTripBookings(tripId: number): Observable<BookingResponse[]> {
+    return this.http.get<BookingResponse[]>(
+      `${this.baseUrl}/trip/${tripId}/bookings`
     );
   }
 

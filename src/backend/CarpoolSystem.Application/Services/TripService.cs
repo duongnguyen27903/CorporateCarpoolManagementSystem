@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarpoolSystem.Application.Interfaces;
 using CarpoolSystem.Domain.Entities;
+using CarpoolSystem.Application.DTOs;
 
 namespace CarpoolSystem.Application.Services
 {
@@ -105,6 +106,39 @@ namespace CarpoolSystem.Application.Services
             }
 
             return trip;
+        }
+
+        public async Task<IEnumerable<TripBookingResponse>> GetTripBookingsAsync( int tripId, int driverId)
+        {
+            var tripRepository = _unitOfWork.Repository<Trip>();
+            var bookingRepository = _unitOfWork.Repository<Booking>();
+
+            // Kiểm tra Trip
+            var trip = await tripRepository.GetByIdAsync(tripId);
+
+            if (trip == null)
+            {
+                throw new KeyNotFoundException("Trip not found.");
+            }
+
+            // Chỉ Driver sở hữu Trip mới được xem booking
+            if (trip.DriverId != driverId)
+            {
+                throw new UnauthorizedAccessException(
+                    "You are not the driver of this trip."
+                );
+            }
+
+            var bookings = await bookingRepository.FindAsync(
+                b => b.TripId == tripId
+            );
+
+            return bookings.Select(b => new TripBookingResponse(
+                b.BookingId,
+                b.TripId,
+                b.PassengerId,
+                b.Status
+            ));
         }
     }
 }
