@@ -1,0 +1,71 @@
+services:
+  # 1. Database
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: app_sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/1433' || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
+    restart: always
+
+  # 2. EF Core Migration Job (Tái sử dụng Build Context & Dockerfile của Backend)
+  # migration:
+  #   build:
+  #     context: ./src/backend
+  #     dockerfile: Dockerfile
+  #   container_name: app_migration
+  #   environment:
+  #     - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=CarpoolSystem;User Id=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
+  #     - DOTNET_ROLL_FORWARD=Major
+  #   # Nếu trong Dockerfile context đặt làm làm thư mục chứa solution/project thì điều chỉnh lại đường dẫn cho phù hợp:
+  #   # command: >
+  #   #   dotnet ef database update 
+  #   #   --project CarpoolSystem.Infrastructure.Sqlserver 
+  #   #   --startup-project CarpoolSystem.API
+  #   # entrypoint: ["dotnet", "ef", "database", "update", "--project", "CarpoolSystem.Infrastructure.Sqlserver", "--startup-project", "CarpoolSystem.API"]
+  #   command: ["dotnet", "CarpoolSystem.API.dll", "--migrate"]
+  #   depends_on:
+  #     sqlserver:
+  #       condition: service_healthy
+
+  # 3. Backend (.NET 10)
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    container_name: app_backend
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=CarpoolSystem;User Id=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
+      - DOTNET_ROLL_FORWARD=Major
+    depends_on:
+      sqlserver:
+        condition: service_healthy 
+    restart: always
+
+  # 4. Frontend (Angular + Nginx)
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    container_name: app_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  mssql_data:
