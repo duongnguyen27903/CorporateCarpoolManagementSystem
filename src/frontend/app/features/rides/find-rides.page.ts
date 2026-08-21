@@ -1,10 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import {
   BookingService,
+  BookingResponse,
   TripResponse,
   RouteResponse,
   ZoneResponse
@@ -30,7 +31,7 @@ interface RideViewModel extends TripResponse {
 
       <div class="mt-6 flex border-b border-gray-200">
         <button 
-          (click)="activeTab = 'available'" 
+          (click)="selectTab('available')" 
           [class.border-b-2]="activeTab === 'available'"
           [class.border-[#2563EB]]="activeTab === 'available'"
           [class.text-[#2563EB]]="activeTab === 'available'"
@@ -40,7 +41,7 @@ interface RideViewModel extends TripResponse {
           Available Trips
         </button>
         <button 
-          (click)="activeTab = 'my-trips'" 
+          (click)="selectTab('my-trips')" 
           [class.border-b-2]="activeTab === 'my-trips'"
           [class.border-[#2563EB]]="activeTab === 'my-trips'"
           [class.text-[#2563EB]]="activeTab === 'my-trips'"
@@ -70,7 +71,7 @@ interface RideViewModel extends TripResponse {
       <div class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
         @if (loading) {
           <p class="px-6 py-8 text-center text-gray-500">Loading available trips...</p>
-        } @else if (errorMessage) {
+        } @else if (errorMessage && activeTab === 'available') {
           <p class="px-6 py-8 text-center text-red-600">{{ errorMessage }}</p>
         }
         <table class="w-full text-left text-sm">
@@ -96,11 +97,62 @@ interface RideViewModel extends TripResponse {
                   </div>
                 </td>
                 <td class="px-6 py-4"><span class="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">{{ trip.availableSeats }} seats</span></td>
-                <td class="px-6 py-4"><span class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-bold uppercase text-green-700">{{ trip.status }}</span></td>
+                <td class="px-6 py-4"><span class="rounded-full px-2.5 py-1 text-xs font-bold uppercase" [class.bg-green-50]="statusKey(trip.status) === 'open'" [class.text-green-700]="statusKey(trip.status) === 'open'" [class.bg-blue-50]="statusKey(trip.status) === 'inprogress'" [class.text-blue-700]="statusKey(trip.status) === 'inprogress'" [class.bg-gray-100]="statusKey(trip.status) === 'completed'" [class.text-gray-700]="statusKey(trip.status) === 'completed'" [class.bg-red-50]="statusKey(trip.status) === 'cancelled'" [class.text-red-700]="statusKey(trip.status) === 'cancelled'">{{ trip.status }}</span></td>
                 <td class="px-6 py-4 text-right">
-                  <button (click)="requestJoin(trip)" class="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Request Join</button>
+                  @if (activeTab === 'available' && !isOwnTrip(trip)) {
+                    <button (click)="requestJoin(trip)" class="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Request Join</button>
+                  } @else if (activeTab === 'available') {
+                    <span class="text-sm font-semibold text-gray-500">Your trip</span>
+                  } @else {
+                    <div class="flex flex-col items-end gap-2">
+                      @if (statusKey(trip.status) === 'open') {
+                        <button type="button" (click)="changeTripStatus(trip, 'InProgress')" [disabled]="processingTripId === trip.tripId || !hasConfirmedParticipant(trip.tripId)" [title]="hasConfirmedParticipant(trip.tripId) ? 'Start trip' : 'Approve at least one passenger first'" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40">Start trip</button>
+                        @if (!hasConfirmedParticipant(trip.tripId)) {
+                          <span class="max-w-48 text-right text-xs text-amber-700">Approve at least one passenger before starting.</span>
+                        }
+                      }
+                      @if (statusKey(trip.status) === 'inprogress') {
+                        <button type="button" (click)="changeTripStatus(trip, 'Completed')" [disabled]="processingTripId === trip.tripId || !hasConfirmedParticipant(trip.tripId)" [title]="hasConfirmedParticipant(trip.tripId) ? 'Complete trip' : 'Approve at least one passenger first'" class="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40">Complete</button>
+                        @if (!hasConfirmedParticipant(trip.tripId)) {
+                          <span class="max-w-48 text-right text-xs text-amber-700">Approve at least one passenger before completing.</span>
+                        }
+                      }
+                      @if (statusKey(trip.status) === 'open') {
+                        <button type="button" (click)="changeTripStatus(trip, 'Cancelled')" [disabled]="processingTripId === trip.tripId" class="rounded-lg border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-40">Cancel</button>
+                      }
+                      <button type="button" (click)="togglePassengerRequests(trip.tripId)" class="rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100">
+                        {{ openRequestsTripId === trip.tripId ? 'Hide' : 'View' }} passenger requests ({{ pendingBookingsFor(trip.tripId).length }})
+                      </button>
+                    </div>
+                  }
                 </td>
               </tr>
+              @if (activeTab === 'my-trips' && openRequestsTripId === trip.tripId) {
+                <tr class="bg-blue-50/40">
+                  <td colspan="5" class="px-6 py-4">
+                    <div class="rounded-lg border border-blue-100 bg-white p-4">
+                      <h3 class="text-sm font-bold text-gray-900">Passenger requests</h3>
+                      @if (pendingBookingsFor(trip.tripId).length === 0) {
+                        <p class="mt-2 text-sm text-gray-500">No pending requests for this trip.</p>
+                      } @else {
+                        <div class="mt-3 divide-y divide-gray-100">
+                          @for (booking of pendingBookingsFor(trip.tripId); track booking.bookingId) {
+                            <div class="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between">
+                              <div>
+                                <p class="font-semibold text-gray-900">{{ passengerName(booking) }}</p>
+                                <p class="text-sm text-gray-600">Phone: {{ passengerPhone(booking) }}</p>
+                              </div>
+                              <button type="button" (click)="approveBooking(booking)" [disabled]="processingBookingId === booking.bookingId" class="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50">
+                                {{ processingBookingId === booking.bookingId ? 'Approving...' : 'Approve' }}
+                              </button>
+                            </div>
+                          }
+                        </div>
+                      }
+                    </div>
+                  </td>
+                </tr>
+              }
             }
 
             @if (displayedTrips.length === 0) {
@@ -115,6 +167,7 @@ interface RideViewModel extends TripResponse {
 export class FindRidesPage implements OnInit {
   private bookingService = inject(BookingService);
   private authStore = inject(AuthStore);
+  private cdr = inject(ChangeDetectorRef);
 
   activeTab: 'available' | 'my-trips' = 'available';
   searchQuery: string = '';
@@ -122,6 +175,11 @@ export class FindRidesPage implements OnInit {
   allTrips: RideViewModel[] = [];
   loading = true;
   errorMessage = '';
+  myTripsLoaded = false;
+  myBookings: BookingResponse[] = [];
+  processingTripId: number | null = null;
+  processingBookingId: number | null = null;
+  openRequestsTripId: number | null = null;
 
   ngOnInit() {
     this.bookingService.getActiveTrips().pipe(
@@ -134,6 +192,61 @@ export class FindRidesPage implements OnInit {
     ).subscribe({
       next: trips => this.allTrips = trips,
       complete: () => this.loading = false
+    });
+  }
+
+  selectTab(tab: 'available' | 'my-trips'): void {
+    this.activeTab = tab;
+    if (tab === 'my-trips' && !this.myTripsLoaded) {
+      this.loadMyTrips();
+    }
+  }
+
+  private loadMyTrips(): void {
+    this.loading = true;
+    this.bookingService.getMyTrips().pipe(
+      switchMap(trips => trips.length ? forkJoin(trips.map(trip => this.loadTripDetails(trip))) : of([] as RideViewModel[])),
+      catchError((err: unknown) => {
+        console.error(err);
+        this.errorMessage = '';
+        return of([] as RideViewModel[]);
+      })
+    ).subscribe({
+      next: trips => {
+        const driverId = this.authStore.user()?.id;
+        this.allTrips = [...this.allTrips.filter(trip => trip.driverId !== driverId), ...trips];
+        this.myTripsLoaded = true;
+        this.loading = false;
+        this.loadDriverRequests(trips);
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.loading = false;
+        this.errorMessage = '';
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  private loadDriverRequests(trips: RideViewModel[]): void {
+    if (trips.length === 0) {
+      this.myBookings = [];
+      return;
+    }
+
+    forkJoin(
+      trips.map(trip => this.bookingService.getTripBookings(trip.tripId))
+    ).subscribe({
+      next: bookingGroups => {
+        this.myBookings = bookingGroups
+          .flat();
+        this.cdr.detectChanges();
+      },
+      error: err => {
+        console.error('Unable to load passenger requests for driver trips:', err);
+        this.myBookings = [];
+        this.cdr.detectChanges();
+      }
     });
   }
 
@@ -157,11 +270,29 @@ export class FindRidesPage implements OnInit {
         ].some(value => String(value ?? '').toLowerCase().includes(q))
       );
     }
-    return trips;
+    return [...trips].sort((left, right) => this.statusOrder(left.status) - this.statusOrder(right.status));
   }
 
   get displayedTrips() {
     return this.filteredTrips;
+  }
+
+  isOwnTrip(trip: RideViewModel): boolean {
+    return trip.driverId === this.authStore.user()?.id;
+  }
+
+  statusKey(status: string): string {
+    return status.replace(/\s+/g, '').toLowerCase();
+  }
+
+  private statusOrder(status: string): number {
+    const order: Record<string, number> = {
+      open: 0,
+      inprogress: 1,
+      completed: 2,
+      cancelled: 3
+    };
+    return order[this.statusKey(status)] ?? 99;
   }
 
   requestJoin(trip: RideViewModel) {
@@ -170,6 +301,75 @@ export class FindRidesPage implements OnInit {
       error: (err: unknown) => {
         console.error(err);
         alert('Có lỗi xảy ra.');
+      }
+    });
+  }
+
+  pendingBookingsFor(tripId: number): BookingResponse[] {
+    return this.myBookings.filter(booking =>
+      booking.tripId === tripId && this.statusKey(booking.status) === 'pending'
+    );
+  }
+
+  hasConfirmedParticipant(tripId: number): boolean {
+    return this.myBookings.some(booking =>
+      booking.tripId === tripId && ['confirmed', 'checkedin'].includes(this.statusKey(booking.status))
+    );
+  }
+
+  togglePassengerRequests(tripId: number): void {
+    this.openRequestsTripId = this.openRequestsTripId === tripId ? null : tripId;
+  }
+
+  passengerName(booking: BookingResponse): string {
+    return booking.passengerName || booking.passenger?.fullName || `Passenger #${booking.passengerId}`;
+  }
+
+  passengerPhone(booking: BookingResponse): string {
+    return booking.passengerPhone || booking.passenger?.phone || 'Not provided by API';
+  }
+
+  approveBooking(booking: BookingResponse): void {
+    if (this.processingBookingId !== null) return;
+    this.processingBookingId = booking.bookingId;
+    this.bookingService.confirmBooking(booking.bookingId).subscribe({
+      next: updatedBooking => {
+        this.myBookings = this.myBookings.map(item =>
+          item.bookingId === updatedBooking.bookingId ? updatedBooking : item
+        );
+        this.cdr.detectChanges();
+      },
+      error: err => {
+        console.error(err);
+        alert('Unable to approve this passenger request.');
+      },
+      complete: () => {
+        this.processingBookingId = null;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  changeTripStatus(trip: RideViewModel, status: string): void {
+    if (status === trip.status || this.processingTripId !== null) return;
+    if ((status === 'InProgress' || status === 'Completed') && !this.hasConfirmedParticipant(trip.tripId)) {
+      alert(`Approve at least one passenger before ${status === 'InProgress' ? 'starting' : 'completing'} this trip.`);
+      return;
+    }
+    this.processingTripId = trip.tripId;
+    this.bookingService.updateTripStatus(trip.tripId, status).subscribe({
+      next: updatedTrip => {
+        Object.assign(trip, updatedTrip);
+        this.cdr.detectChanges();
+      },
+      error: err => {
+        console.error(err);
+        alert('Unable to update trip status.');
+        this.cdr.detectChanges();
+      },
+      complete: () => {
+        this.processingTripId = null;
+        this.cdr.detectChanges();
       }
     });
   }

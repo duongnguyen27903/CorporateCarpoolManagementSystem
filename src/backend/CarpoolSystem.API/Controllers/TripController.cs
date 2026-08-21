@@ -88,5 +88,45 @@ namespace CarpoolSystem.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // Lấy các trip đã được book
+        [HttpGet("{tripId:int}/bookings")]
+        [Authorize(Roles = "Driver")]
+        public async Task<IActionResult> GetTripBookings(int tripId)
+        {
+            var employeeIdClaim =
+                User.Claims
+                    .FirstOrDefault(c => c.Type == "employeeId")
+                    ?.Value;
+
+            if (!int.TryParse(employeeIdClaim, out var driverId))
+            {
+                return Unauthorized(new
+                {
+                    message = "Invalid employee identity."
+                });
+            }
+
+            try
+            {
+                var bookings = await _tripService.GetTripBookingsAsync(
+                    tripId,
+                    driverId
+                );
+
+                return Ok(bookings);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound(new
+                {
+                    message = "Trip not found."
+                });
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Forbid();
+            }
+        }
     }
 }

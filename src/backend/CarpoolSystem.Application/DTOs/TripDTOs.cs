@@ -8,4 +8,5 @@ namespace CarpoolSystem.Application.DTOs
     public record UpdateTripStatusRequest(string Status);
 
     public record TripResponse(int TripId, int RouteId, int DriverId, int VehicleId, DateTime DepartureTime, int AvailableSeats, string Status, DateTime CreatedAt);
+    public record TripBookingResponse(int BookingId, int TripId, int PassengerId, string Status);
 }
