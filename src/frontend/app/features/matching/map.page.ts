@@ -1,15 +1,17 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ElementRef, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
 import { PolylineUtilsService } from '../../../src/app/services/polyline-utils.service';
 import { NominatimService, NominatimPlace, SuggestionOption } from '../../../src/app/services/nominatim.service';
-import { MatchingService } from '../../../src/app/services/matching.service';
+import { EmployeeSummary, MatchingService, VehicleSummary } from '../../../src/app/services/matching.service';
 
 export interface RouteItem {
   id: string;
+  routeDetailId: number;
+  routeId: number;
   name: string;
   encodedPolyline: string;
 }
@@ -46,6 +48,15 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
   pickupLocation: MarkerLocation | null = null;
   dropoffLocation: MarkerLocation | null = null;
   routes: RouteItem[] = [];
+  selectedRoute: RouteItem | null = null;
+  selectedDriver: EmployeeSummary | null = null;
+  selectedVehicles: VehicleSummary[] = [];
+  routeDetailsLoading = false;
+  routeDetailsError = '';
+  private routeDetailsCache = new Map<string, {
+    driver: EmployeeSummary;
+    vehicles: VehicleSummary[];
+  }>();
 
   // routes: RouteItem[] = [
   //   {
@@ -69,6 +80,7 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
     private polylineUtils: PolylineUtilsService,
     private geocoder: NominatimService,
     private matchingService: MatchingService,
+    private changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -232,6 +244,16 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
 
   // function to call the matching service and handle the response
   findMatches(): void {
+    //this.routeDetailsCancel$.next();
+    this.routes = [];
+    this.selectedRoute = null;
+    this.selectedDriver = null;
+    this.selectedVehicles = [];
+    this.routeDetailsLoading = false;
+    this.routeDetailsError = '';
+    //this.routeDetailsCache.clear();
+    this.changeDetector.detectChanges();
+
     const normalizedDepartureTime = this.normalizeDepartureTime(this.departureTime);
 
     if (!normalizedDepartureTime || !this.pickupLocation || !this.dropoffLocation) {
@@ -257,25 +279,69 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
 
         this.routes = matches.map((route: any, index: number) => ({
           id: String(route.routeDetailId ?? route.id ?? route.routeId ?? index + 1),
+          routeDetailId: Number(route.routeDetailId ?? route.id ?? index + 1),
+          routeId: Number(route.routeId),
           name: route.routeDetailName ?? route.name ?? `Route ${index + 1}`,
           encodedPolyline: route.encodedPolyline ?? '',
         }));
-        //create a div contain this.routes[i].id and append it to <div class="route-cards-container"> in map.page.html
-        
-        // if (this.routes.length > 0) {
-        //   this.selectRoute(this.routes[0]);
-        // }
+        this.changeDetector.detectChanges();
       },
       error: (error) => {
         console.error('Matching request failed', error);
         this.routes = [];
+        this.changeDetector.detectChanges();
       },
     });
   }
 
   selectRoute(route: RouteItem): void {
+    if (this.selectedRoute?.id === route.id) {
+      return;
+    }
+
+    this.selectedRoute = route;
+    this.selectedDriver = null;
+    this.selectedVehicles = [];
+    this.routeDetailsLoading = true;
+    this.routeDetailsError = '';
+
     const routeCoordinates = this.polylineUtils.decodePolyline(route.encodedPolyline);
     this.displayRoute(routeCoordinates);
+
+    const cachedDetails = this.routeDetailsCache.get(route.id);
+    if (cachedDetails) {
+      this.selectedDriver = cachedDetails.driver;
+      this.selectedVehicles = cachedDetails.vehicles;
+      this.routeDetailsLoading = false;
+      this.changeDetector.detectChanges();
+      return;
+    }
+
+    this.matchingService.getRouteDetail(route.routeDetailId).pipe(
+      switchMap(routeDetail => this.matchingService.getRoute(routeDetail.routeId)),
+      switchMap(routeInfo => forkJoin({
+        driver: this.matchingService.getEmployee(routeInfo.employeeId),
+        vehicles: this.matchingService.getEmployeeVehicles(routeInfo.employeeId),
+      })),
+      takeUntil(this.destroy$),
+    ).subscribe({
+      next: ({ driver, vehicles }) => {
+        this.selectedDriver = driver;
+        this.selectedVehicles = Array.isArray(vehicles) ? vehicles : [];
+        this.routeDetailsCache.set(route.id, {
+          driver,
+          vehicles: this.selectedVehicles,
+        });
+        this.routeDetailsLoading = false;
+        this.changeDetector.detectChanges();
+      },
+      error: (error) => {
+        console.error('Route details request failed', error);
+        this.routeDetailsLoading = false;
+        this.routeDetailsError = 'Unable to load driver and vehicle information.';
+        this.changeDetector.detectChanges();
+      },
+    });
   }
 
   private displayRoute(points: L.LatLngTuple[]): void {

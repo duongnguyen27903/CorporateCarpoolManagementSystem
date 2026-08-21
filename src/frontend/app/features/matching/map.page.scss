@@ -139,6 +139,23 @@
   color: #fff;
 }
 
+.route-details-information-container {
+  padding: var(--spacing-md);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--card-border-radius);
+  background: #fff;
+  color: #374151;
+  box-shadow: var(--card-shadow);
+}
+
+.route-details-information-container h3 {
+  margin: 0 0 var(--spacing-sm);
+}
+
+.route-details-information-container p {
+  margin: var(--spacing-sm) 0;
+}
+
 @media (prefers-color-scheme: dark) {
   .map-layout {
     background: #111827;

@@ -49,6 +49,22 @@ namespace CarpoolSystem.API.Controllers
             return Ok(response);
         }
 
+        [HttpGet("employee/{employeeId:int}")]
+        public async Task<IActionResult> GetEmployeeVehicles(int employeeId)
+        {
+            var vehicles = await _vehicleService.GetVehiclesByEmployeeAsync(employeeId);
+            var response = vehicles.Select(v => new VehicleResponse(
+                v.VehicleId,
+                v.EmployeeId,
+                v.LicensePlate,
+                v.VehicleType,
+                v.SeatCount,
+                v.IsActive
+            ));
+
+            return Ok(response);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateVehicle(int id, [FromBody] UpdateVehicleRequest request)
         {

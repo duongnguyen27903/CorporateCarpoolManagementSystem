@@ -44,5 +44,34 @@
             </div>
             }
         </div>
+        <div class="route-details-information-container">
+            @if (routeDetailsLoading) {
+                <p>Loading driver and vehicle information...</p>
+            } @else if (routeDetailsError) {
+                <p>{{ routeDetailsError }}</p>
+            } @else if (selectedDriver || selectedVehicles.length > 0) {
+                <h3>Driver and vehicle</h3>
+                @if (selectedDriver) {
+                    <p><strong>Driver:</strong> {{ selectedDriver.fullName }}</p>
+                    <p><strong>Phone:</strong> {{ selectedDriver.phone || 'Not available' }}</p>
+                }
+
+                @if (selectedVehicles.length > 0) {
+                    <div>
+                        <strong>Vehicle{{ selectedVehicles.length > 1 ? 's' : '' }}:</strong>
+                        @for (vehicle of selectedVehicles; track vehicle.vehicleId) {
+                            <p>
+                                {{ vehicle.vehicleType }} - {{ vehicle.licensePlate }}
+                                ({{ vehicle.seatCount }} seats)
+                            </p>
+                        }
+                    </div>
+                } @else {
+                    <p>No active vehicle registered.</p>
+                }
+            } @else {
+                <p>Select a route to view driver and vehicle information.</p>
+            }
+        </div>
     </div>
 </div>

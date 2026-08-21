@@ -87,5 +87,26 @@ namespace CarpoolSystem.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetEmployee(int id)
+        {
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
+            if (employee == null)
+            {
+                return NotFound("Employee not found");
+            }
+
+            return Ok(new EmployeeResponse(
+                employee.EmployeeId,
+                employee.FullName,
+                employee.Email,
+                employee.Phone,
+                employee.DepartmentId,
+                employee.RoleId,
+                employee.IsActive,
+                employee.CreatedAt
+            ));
+        }
     }
 }
