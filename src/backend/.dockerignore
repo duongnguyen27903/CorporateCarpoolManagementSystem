@@ -1,0 +1,32 @@
+# Thư mục build artifact của .NET
+**/bin/
+**/obj/
+
+# File thiết lập và môi trường cá nhân
+**/.env
+**/.env.*
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# IDE & Editor Setup (Visual Studio / VS Code / JetBrains)
+**/.vs/
+**/.vscode/
+**/.idea/
+*.user
+*.suo
+*.sln.docstates
+
+# Git repository
+**/.git/
+**/.github/
+.gitignore
+.dockerignore
+
+# Docker & CI/CD artifacts
+docker-compose*.yml
+Dockerfile*
+
+# Log và Temp files
+**/logs/
+**/TestResults/
+*.log
