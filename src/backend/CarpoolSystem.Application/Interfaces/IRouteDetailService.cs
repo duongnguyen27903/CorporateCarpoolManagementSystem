@@ -12,6 +12,6 @@ namespace CarpoolSystem.Application.Interfaces
         Task<int> CreateRouteDetailAsync(RouteDetail route, IReadOnlyList<RouteH3> h3Cells);
         Task DeleteRouteDetailAsync(int routeId);
         Task<RouteDetail?> GetRouteDetailByIdAsync(int routeDetailId);
-        Task UpdateRouteDetailAsync(int routeId, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells);
+        Task UpdateRouteDetailAsync(int routeId,string? routeDetailName, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells);
     }
 }

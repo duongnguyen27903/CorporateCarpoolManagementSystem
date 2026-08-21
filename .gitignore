@@ -1,6 +1,7 @@
 ﻿**/bin/
 **/obj/
 ./vs
+.vscode/
 # Thêm các dòng cần ignore
 echo ".vs/" >> .gitignore
 echo "src/backend/packages/" >> .gitignore

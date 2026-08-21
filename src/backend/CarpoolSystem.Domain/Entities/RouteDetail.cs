@@ -11,6 +11,8 @@ namespace CarpoolSystem.Domain.Entities
     {
         public int RouteDetailId { get; set; }
 
+        public string? RouteDetailName { get; set; }
+
         public int RouteId { get; set; }
 
         /// <summary>

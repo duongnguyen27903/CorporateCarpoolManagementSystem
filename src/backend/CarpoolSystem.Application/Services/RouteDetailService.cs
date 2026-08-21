@@ -65,7 +65,7 @@ namespace CarpoolSystem.Application.Services
             return await _unitOfWork.Repository<RouteDetail>().GetByIdAsync(routeDetailId);
         }
 
-        public async Task UpdateRouteDetailAsync(int routeId, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells)
+        public async Task UpdateRouteDetailAsync(int routeId,string? routeDetailName, string encodedPolyline, IReadOnlyList<RouteH3> newH3Cells)
         {
             await _unitOfWork.BeginTransactionAsync();
             try
@@ -75,6 +75,7 @@ namespace CarpoolSystem.Application.Services
                     throw new InvalidOperationException($"DriverRoute {routeId} was not found.");
 
                 // 1. Update route
+                route.RouteDetailName = routeDetailName;
                 route.EncodedPolyline = encodedPolyline;
                 _unitOfWork.Repository<RouteDetail>().Update(route);
 
