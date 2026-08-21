@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CarpoolSystem.Domain.Entities;
+using CarpoolSystem.Application.DTOs;
 
 namespace CarpoolSystem.Application.Services
 {
@@ -12,5 +13,6 @@ namespace CarpoolSystem.Application.Services
         Task<IEnumerable<Trip>> GetActiveTripsAsync();
         Task<Trip?> GetTripByIdAsync(int id);
         Task<Trip> UpdateTripStatusAsync(int employeeId, int tripId, string status);
+        Task<IEnumerable<TripBookingResponse>> GetTripBookingsAsync(int tripId, int driverId);
     }
 }
