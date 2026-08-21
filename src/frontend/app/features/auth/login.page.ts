@@ -60,8 +60,8 @@ export class LoginPage {
   private readonly router = inject(Router)
   private readonly route = inject(ActivatedRoute)
 
-  protected email = 'demo@example.com'
-  protected password = 'password'
+  protected email = 'admin@carpool.com'
+  protected password = '123456'
 
   async submit(): Promise<void> {
     try {
