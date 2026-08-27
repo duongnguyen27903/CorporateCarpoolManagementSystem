@@ -5,8 +5,8 @@
                 type="text"
                 list="map_search_dl"
                 [(ngModel)]="searchQuery"
-                (input)="onInput($event)"
-                (change)="onSelectOption($any($event.target).value)"
+                (keydown.enter)="onSearch()"
+                
                 placeholder="Search for a location..."
             />
 

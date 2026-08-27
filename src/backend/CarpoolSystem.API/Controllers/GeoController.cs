@@ -56,20 +56,38 @@ namespace CarpoolSystem.API.Controllers
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             request.Headers.UserAgent.ParseAdd("CarpoolSystem/1.0 (+https://localhost:4200)");
 
-            var response = await _httpClient.SendAsync(request);
-            var payload = await response.Content.ReadAsStringAsync();
-
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage response;
+            try
             {
-                Cache[cacheKey] = (DateTimeOffset.UtcNow, payload);
+                response = await _httpClient.SendAsync(request);
+            }
+            catch (HttpRequestException)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    "The geocoding service is temporarily unavailable.");
+            }
+            catch (TaskCanceledException)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    "The geocoding service timed out.");
             }
 
-            if (!response.IsSuccessStatusCode)
+            using (response)
             {
-                return StatusCode((int)response.StatusCode, payload);
-            }
+                var payload = await response.Content.ReadAsStringAsync();
 
-            return Content(payload, "application/json");
+                if (response.IsSuccessStatusCode)
+                {
+                    Cache[cacheKey] = (DateTimeOffset.UtcNow, payload);
+                }
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode, payload);
+                }
+
+                return Content(payload, "application/json");
+            }
         }
 
         [HttpGet("lookup")]
@@ -88,15 +106,33 @@ namespace CarpoolSystem.API.Controllers
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             request.Headers.UserAgent.ParseAdd("CarpoolSystem/1.0 (+https://localhost:4200)");
 
-            var response = await _httpClient.SendAsync(request);
-            var payload = await response.Content.ReadAsStringAsync();
-
-            if (!response.IsSuccessStatusCode)
+            HttpResponseMessage response;
+            try
             {
-                return StatusCode((int)response.StatusCode, payload);
+                response = await _httpClient.SendAsync(request);
+            }
+            catch (HttpRequestException)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    "The geocoding service is temporarily unavailable.");
+            }
+            catch (TaskCanceledException)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                    "The geocoding service timed out.");
             }
 
-            return Content(payload, "application/json");
+            using (response)
+            {
+                var payload = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode, payload);
+                }
+
+                return Content(payload, "application/json");
+            }
         }
 
         private static async Task EnforceRateLimitAsync()

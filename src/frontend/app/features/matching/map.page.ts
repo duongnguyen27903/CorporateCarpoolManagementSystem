@@ -75,6 +75,9 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
   suggestions: SuggestionOption[] = [];
   isOpen = false;
   options: MapSearchOptions = { fly: false };
+  private submittedSearchQuery = '';
+  private submittedSuggestionSelected = false;
+  private searchHandledByEnter = false;
 
   constructor(
     private polylineUtils: PolylineUtilsService,
@@ -145,13 +148,32 @@ export class MapPage implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  onInput(event: Event): void {
-    const inputVal = (event.target as HTMLInputElement).value;
-    this.searchSubject.next(inputVal);
+  onSearch(): void {
+    const query = this.searchQuery.trim();
+    this.submittedSearchQuery = query;
+    this.submittedSuggestionSelected = this.suggestions.some((option) => query.startsWith(option.displayName));
+    this.searchHandledByEnter = true;
+
+    this.onSelectOption(query, true);
+    setTimeout(() => (this.searchHandledByEnter = false));
   }
 
-  onSelectOption(val: string): void {
+  onSelectOption(val: string, fromEnter = false): void {
+    if (!fromEnter && this.searchHandledByEnter) {
+      this.searchHandledByEnter = false;
+      return;
+    }
+
     const selectedOption = this.suggestions.find((opt) => val.startsWith(opt.displayName));
+    //const submittedQuery = val.trim() === this.submittedSearchQuery;
+    //const submittedSuggestionSelected = this.submittedSuggestionSelected;
+    this.submittedSearchQuery = '';
+    this.submittedSuggestionSelected = false;
+
+    // if (submittedQuery && !submittedSuggestionSelected) {
+    //   return;
+    // }
+
     this.searchQuery = '';
     this.isOpen = false;
 
