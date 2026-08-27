@@ -128,6 +128,10 @@ Instead of running expensive distance calculations across all database records, 
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
 ## Video demo
 
+[carpoolMatching.webm](https://github.com/user-attachments/assets/421e8f04-6fef-49a4-8bcf-d8c83061b08d)
 
